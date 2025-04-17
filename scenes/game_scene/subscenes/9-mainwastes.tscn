@@ -1,0 +1,318 @@
+[gd_scene load_steps=26 format=3 uid="uid://djppri5c2hq8"]
+
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_25rdi"]
+[ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="2_b4jin"]
+[ext_resource type="PackedScene" uid="uid://d4ab4lg3t7hoj" path="res://scenes/environment/bush.tscn" id="12_txdoe"]
+[ext_resource type="Shader" path="res://scenes/game_scene/fogshader.gdshader" id="13_0i1wk"]
+[ext_resource type="Script" path="res://scenes/environment/fog_entrance.gd" id="13_cfhum"]
+[ext_resource type="PackedScene" uid="uid://dxv0g8h3om23a" path="res://scenes/environment/interactive_grass_desert1.tscn" id="13_jbyh6"]
+[ext_resource type="Script" path="res://scenes/environment/misstep_area.gd" id="14_p00wb"]
+[ext_resource type="PackedScene" uid="uid://d1d1b2xaym8tl" path="res://scenes/environment/interactive_grass_desert2.tscn" id="14_s6wag"]
+[ext_resource type="PackedScene" uid="uid://hu1hn2nmqiol" path="res://scenes/environment/interactive_grass_desert3.tscn" id="15_7qm7u"]
+[ext_resource type="PackedScene" uid="uid://di6453lfvq3nb" path="res://scenes/environment/desertflag.tscn" id="15_eabgm"]
+[ext_resource type="PackedScene" uid="uid://csb6hg2cipb5" path="res://scenes/environment/interactive_grass_desert4.tscn" id="16_56dpf"]
+[ext_resource type="Texture2D" uid="uid://bs4plb1j85ags" path="res://assets/environment/8-wastesbg.png" id="19_eo6yr"]
+[ext_resource type="Texture2D" uid="uid://bwqd2y5t2ocq0" path="res://assets/environment/8-mainwastespath.png" id="20_yax5t"]
+[ext_resource type="PackedScene" uid="uid://ov3bqtgtxem2" path="res://scenes/helper/loader_area.tscn" id="23_lihks"]
+[ext_resource type="PackedScene" uid="uid://c6yu7veap5ong" path="res://scenes/helper/level_load_location.tscn" id="24_xkcgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b816o"]
+size = Vector2(23, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ytkg"]
+size = Vector2(111, 618.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl4m8"]
+size = Vector2(724, 89)
+
+[sub_resource type="Animation" id="Animation_h1sf8"]
+resource_name = "showfog"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParallaxLayer/ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.95744, 0.895968, 0.831704, 0.811765)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParallaxLayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hhrpd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParallaxLayer/ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParallaxLayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8vmx8"]
+resource_name = "fogwrong"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParallaxLayer/ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.95744, 0.895968, 0.831704, 0.811765), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParallaxLayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cyenv"]
+_data = {
+&"showfog": SubResource("Animation_h1sf8"),
+&"fogwrong": SubResource("Animation_8vmx8"),
+&"RESET": SubResource("Animation_hhrpd")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_drv87"]
+frequency = 0.0015
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bmesy"]
+seamless = true
+noise = SubResource("FastNoiseLite_drv87")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7xv8"]
+shader = ExtResource("13_0i1wk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_bmesy")
+shader_parameter/density = 1.0
+shader_parameter/speed = Vector2(0.02, 0.01)
+
+[node name="9MainWastes" type="Node2D" node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
+script = ExtResource("1_25rdi")
+id = 8
+allLevelLocations = [NodePath("LevelLoadLocation")]
+characterRoot = NodePath("SceneObjects")
+cameraTopLeft = NodePath("CameraPoints/TopLeft")
+cameraBottomRight = NodePath("CameraPoints/BottomRight")
+
+[node name="CameraPoints" parent="." instance=ExtResource("2_b4jin")]
+
+[node name="TopLeft" parent="CameraPoints" index="0"]
+position = Vector2(21, 25)
+
+[node name="BottomRight" parent="CameraPoints" index="1"]
+position = Vector2(364, 210)
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("19_eo6yr")
+centered = false
+
+[node name="8-mainwastespath" type="Sprite2D" parent="Background"]
+texture = ExtResource("20_yax5t")
+centered = false
+
+[node name="SceneObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Bushes" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Bush" parent="SceneObjects/Bushes" instance=ExtResource("12_txdoe")]
+position = Vector2(29, 275)
+
+[node name="Grass" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrassDesert1" parent="SceneObjects/Grass" instance=ExtResource("13_jbyh6")]
+position = Vector2(265, 283)
+
+[node name="InteractiveGrassDesert7" parent="SceneObjects/Grass" instance=ExtResource("13_jbyh6")]
+position = Vector2(22, 240)
+
+[node name="InteractiveGrassDesert8" parent="SceneObjects/Grass" instance=ExtResource("13_jbyh6")]
+position = Vector2(31, 303)
+
+[node name="InteractiveGrassDesert9" parent="SceneObjects/Grass" instance=ExtResource("13_jbyh6")]
+position = Vector2(28, 236)
+
+[node name="InteractiveGrassDesert2" parent="SceneObjects/Grass" instance=ExtResource("14_s6wag")]
+position = Vector2(269, 287)
+
+[node name="InteractiveGrassDesert4" parent="SceneObjects/Grass" instance=ExtResource("14_s6wag")]
+position = Vector2(63, 253)
+
+[node name="InteractiveGrassDesert5" parent="SceneObjects/Grass" instance=ExtResource("14_s6wag")]
+position = Vector2(69, 256)
+
+[node name="InteractiveGrassDesert3" parent="SceneObjects/Grass" instance=ExtResource("15_7qm7u")]
+position = Vector2(364, 185)
+
+[node name="InteractiveGrassDesert6" parent="SceneObjects/Grass" instance=ExtResource("15_7qm7u")]
+position = Vector2(370, 188)
+
+[node name="InteractiveGrassDesert10" parent="SceneObjects/Grass" instance=ExtResource("16_56dpf")]
+position = Vector2(367, 181)
+
+[node name="InteractiveGrassDesert11" parent="SceneObjects/Grass" instance=ExtResource("16_56dpf")]
+position = Vector2(61, 260)
+
+[node name="LoaderArea" parent="." instance=ExtResource("23_lihks")]
+position = Vector2(39, 264)
+levelToGoToId = 8
+idLocation = 1
+
+[node name="CollisionShape2D" parent="LoaderArea" index="0"]
+position = Vector2(-28.5, 14)
+shape = SubResource("RectangleShape2D_b816o")
+
+[node name="LevelLoadLocation" parent="." instance=ExtResource("24_xkcgi")]
+position = Vector2(45, 284)
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-56, 302)
+shape = SubResource("RectangleShape2D_2ytkg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(773, 292.688)
+shape = SubResource("RectangleShape2D_2ytkg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(363, 641)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(358, -42)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[node name="FogAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Fog")
+libraries = {
+&"": SubResource("AnimationLibrary_cyenv")
+}
+
+[node name="Fog" type="ParallaxBackground" parent="."]
+layer = 2
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Fog"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="ColorRect2" type="ColorRect" parent="Fog/ParallaxLayer"]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 1128.0
+offset_bottom = 648.0
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Fog/ParallaxLayer"]
+material = SubResource("ShaderMaterial_k7xv8")
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+
+[node name="FogEntrance" type="Area2D" parent="."]
+position = Vector2(8, 239)
+collision_mask = 2
+script = ExtResource("13_cfhum")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FogEntrance"]
+polygon = PackedVector2Array(103, -233, -7, -236, 95, -4, 90, 90, 192, 92, 194, 5, 308, 8, 300, 107, 184, 93, 181, 190, 318, 193, 313, 260, 165, 255, 180, 188, 183, 93, 0, 92, 0, 349, 486, 348, 486, 226, 429, 222, 431, 142, 573, 142, 575, 220, 487, 226, 487, 348, 705, 349, 705, 52, 614, 56, 598, 16, 522, 21, 524.566, 59.4406, 414, 64, 416, -15, 523, -21, 522, 20, 598, 15, 601, -26, 708, -33, 705, -237)
+
+[node name="MisstepArea" type="Area2D" parent="."]
+position = Vector2(8, 239)
+collision_mask = 2
+script = ExtResource("14_p00wb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MisstepArea"]
+polygon = PackedVector2Array(-49, -261, -44, -21, 298, -8, 312, 175, 413, 166, 414, -27, 760, -35, 762, 71, 577, 79, 563, 257, 171, 265, 164, 81, -43, 87, -29, 371, 807, 373, 813, -255)
+
+[node name="DesertFlag" parent="." instance=ExtResource("15_eabgm")]
+position = Vector2(44, 265)
+
+[connection signal="body_entered" from="FogEntrance" to="FogEntrance" method="_on_body_entered"]
+[connection signal="body_exited" from="FogEntrance" to="FogEntrance" method="_on_body_exited"]
+[connection signal="body_entered" from="MisstepArea" to="MisstepArea" method="_on_body_entered"]
+[connection signal="body_exited" from="MisstepArea" to="MisstepArea" method="_on_body_exited"]
+
+[editable path="CameraPoints"]
+[editable path="LoaderArea"]

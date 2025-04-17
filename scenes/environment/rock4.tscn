@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xlcwm25vducq"]
+
+[ext_resource type="Texture2D" uid="uid://paea4vouohw7" path="res://assets/environment/rock4.png" id="1_yso3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(6, 4)
+
+[node name="Rock4" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Rock4" type="Sprite2D" parent="."]
+texture = ExtResource("1_yso3j")

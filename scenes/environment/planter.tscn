@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://jmb71phnoncd"]
+
+[ext_resource type="Texture2D" uid="uid://chd0c6yv6r1bp" path="res://assets/environment/planter.png" id="1_a4cf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(18, 9)
+
+[node name="Column3" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Planter" type="Sprite2D" parent="."]
+texture = ExtResource("1_a4cf7")
+offset = Vector2(0, -2.145)

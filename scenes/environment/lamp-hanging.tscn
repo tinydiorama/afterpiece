@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://co5pwmh7l7tl1"]
+
+[ext_resource type="Texture2D" uid="uid://cvsb77so15egb" path="res://assets/extra/light.png" id="2_5r8u8"]
+[ext_resource type="Texture2D" uid="uid://bbi2y022an2ey" path="res://assets/environment/hanginglamp.png" id="2_gn3t2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(6, 10)
+
+[node name="HangingLamp" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 3)
+color = Color(0.999999, 0.99821, 0.710989, 1)
+energy = 0.2
+texture = ExtResource("2_5r8u8")
+texture_scale = 0.4
+
+[node name="Hanginglamp" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_gn3t2")

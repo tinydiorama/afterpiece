@@ -1,0 +1,358 @@
+[gd_scene load_steps=32 format=3 uid="uid://m26xii8ufi2h"]
+
+[ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="1_4r4hp"]
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_6rufe"]
+[ext_resource type="Texture2D" uid="uid://dmmf7px6dhp8g" path="res://assets/environment/background.png" id="2_7d2nd"]
+[ext_resource type="Texture2D" uid="uid://ck72uo3f3pbpe" path="res://assets/environment/2-townentrancejunction.png" id="3_cjhrg"]
+[ext_resource type="PackedScene" uid="uid://x0wabcyrvfys" path="res://scenes/enemies/bat.tscn" id="5_0cknq"]
+[ext_resource type="PackedScene" uid="uid://dmecwfutof251" path="res://scenes/environment/shrine1.tscn" id="6_atinj"]
+[ext_resource type="PackedScene" uid="uid://b73an3c3xxxuu" path="res://scenes/environment/shrine2.tscn" id="7_l1x6w"]
+[ext_resource type="PackedScene" uid="uid://byxmsp0l2v0n0" path="res://scenes/environment/shrine3.tscn" id="8_8m2p1"]
+[ext_resource type="PackedScene" uid="uid://bkfnab0jt7c0m" path="res://scenes/environment/shrine4.tscn" id="9_clcip"]
+[ext_resource type="PackedScene" uid="uid://bhtrit6k22eh8" path="res://scenes/environment/shrine5.tscn" id="10_32sdy"]
+[ext_resource type="PackedScene" uid="uid://f5nk41k4ue" path="res://scenes/environment/tree_2.tscn" id="11_g5tgx"]
+[ext_resource type="PackedScene" uid="uid://jva70o3wlx4d" path="res://scenes/environment/tree_1.tscn" id="12_y1dus"]
+[ext_resource type="PackedScene" uid="uid://83kcp8c0aomw" path="res://scenes/environment/tree_3.tscn" id="13_a6oys"]
+[ext_resource type="PackedScene" uid="uid://d4ab4lg3t7hoj" path="res://scenes/environment/bush.tscn" id="14_kbes1"]
+[ext_resource type="PackedScene" uid="uid://djyn6mgwrdrg1" path="res://scenes/environment/powerline2.tscn" id="15_j40nm"]
+[ext_resource type="PackedScene" uid="uid://hq00grcytdc3" path="res://scenes/environment/column4.tscn" id="16_m46wl"]
+[ext_resource type="PackedScene" uid="uid://c2v8rr0nnjdul" path="res://scenes/environment/column1.tscn" id="17_jl14r"]
+[ext_resource type="PackedScene" uid="uid://egneb2ewburh" path="res://scenes/environment/rock2.tscn" id="18_iqcub"]
+[ext_resource type="PackedScene" uid="uid://dnb7s7recotwj" path="res://scenes/environment/interactive_grass.tscn" id="18_y742a"]
+[ext_resource type="PackedScene" uid="uid://bymjreunmxky8" path="res://scenes/environment/lamppost.tscn" id="19_omnoy"]
+[ext_resource type="PackedScene" uid="uid://ov3bqtgtxem2" path="res://scenes/helper/loader_area.tscn" id="20_wd6y8"]
+[ext_resource type="PackedScene" uid="uid://c6yu7veap5ong" path="res://scenes/helper/level_load_location.tscn" id="21_50u1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b816o"]
+size = Vector2(113, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3li1g"]
+size = Vector2(33, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it3fa"]
+size = Vector2(111, 174.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bja83"]
+size = Vector2(111, 123.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekl6x"]
+size = Vector2(111, 246)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsnd2"]
+size = Vector2(253, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6ve0"]
+size = Vector2(43, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl4m8"]
+size = Vector2(188, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrl8e"]
+size = Vector2(77, 60)
+
+[node name="2TownEntranceJunction" type="Node2D" node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
+script = ExtResource("1_6rufe")
+id = 2
+allLevelLocations = [NodePath("LevelLoadLocation"), NodePath("LevelLoadLocation2"), NodePath("LevelLoadLocation3"), NodePath("LevelLoadLocation4")]
+characterRoot = NodePath("SceneObjects")
+cameraTopLeft = NodePath("CameraPoints/TopLeft")
+cameraBottomRight = NodePath("CameraPoints/BottomRight")
+
+[node name="CameraPoints" parent="." instance=ExtResource("1_4r4hp")]
+
+[node name="TopLeft" parent="CameraPoints" index="0"]
+position = Vector2(21, 25)
+
+[node name="BottomRight" parent="CameraPoints" index="1"]
+position = Vector2(399, 356)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(209, 194)
+scale = Vector2(1.14286, 1.18429)
+texture = ExtResource("2_7d2nd")
+
+[node name="2-townentrancejunction" type="Sprite2D" parent="Background"]
+position = Vector2(0.875, -1.68878)
+scale = Vector2(0.874998, 0.844388)
+texture = ExtResource("3_cjhrg")
+
+[node name="SceneObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Objects" type="Node2D" parent="SceneObjects" groups=["Navigation"]]
+y_sort_enabled = true
+
+[node name="Bat" parent="SceneObjects/Objects" instance=ExtResource("5_0cknq")]
+position = Vector2(200, 154)
+
+[node name="Bat2" parent="SceneObjects/Objects" instance=ExtResource("5_0cknq")]
+position = Vector2(220, 187)
+
+[node name="Bat3" parent="SceneObjects/Objects" instance=ExtResource("5_0cknq")]
+position = Vector2(164, 189)
+
+[node name="Shrine1" parent="SceneObjects/Objects" instance=ExtResource("6_atinj")]
+position = Vector2(337, 290)
+
+[node name="Shrine2" parent="SceneObjects/Objects" instance=ExtResource("7_l1x6w")]
+position = Vector2(325, 309)
+
+[node name="Shrine3" parent="SceneObjects/Objects" instance=ExtResource("8_8m2p1")]
+position = Vector2(296, 312)
+
+[node name="Shrine4" parent="SceneObjects/Objects" instance=ExtResource("9_clcip")]
+position = Vector2(289, 287)
+
+[node name="Shrine5" parent="SceneObjects/Objects" instance=ExtResource("10_32sdy")]
+position = Vector2(315, 277)
+
+[node name="Trees" type="Node2D" parent="SceneObjects/Objects"]
+y_sort_enabled = true
+
+[node name="Tree2" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(108, 284)
+
+[node name="Tree1" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(229, 101)
+
+[node name="Tree3" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(327, 120)
+
+[node name="Tree4" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(226, 268)
+
+[node name="Tree5" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(248, 278)
+
+[node name="Tree6" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(222, 290)
+
+[node name="Tree7" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(266, 203)
+
+[node name="Tree8" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(249, 331)
+
+[node name="Tree9" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(276, 343)
+
+[node name="Tree10" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(252, 313)
+
+[node name="Tree11" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(215, 312)
+
+[node name="Tree12" parent="SceneObjects/Objects/Trees" instance=ExtResource("13_a6oys")]
+position = Vector2(197, 336)
+
+[node name="Tree13" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(349, 332)
+
+[node name="Tree14" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(331, 264)
+
+[node name="Tree15" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(356, 275)
+
+[node name="Tree16" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(346, 255)
+
+[node name="Tree17" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(299, 151)
+
+[node name="Tree18" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(290, 195)
+
+[node name="Tree19" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(289, 224)
+
+[node name="Tree20" parent="SceneObjects/Objects/Trees" instance=ExtResource("13_a6oys")]
+position = Vector2(322, 142)
+
+[node name="Tree21" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(287, 129)
+
+[node name="Tree22" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(119, 261)
+
+[node name="Tree23" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(91, 278)
+
+[node name="Tree24" parent="SceneObjects/Objects/Trees" instance=ExtResource("12_y1dus")]
+position = Vector2(109, 144)
+
+[node name="Tree25" parent="SceneObjects/Objects/Trees" instance=ExtResource("11_g5tgx")]
+position = Vector2(86, 159)
+
+[node name="Tree26" parent="SceneObjects/Objects/Trees" instance=ExtResource("13_a6oys")]
+position = Vector2(112, 157)
+
+[node name="Bushes" type="Node2D" parent="SceneObjects/Objects"]
+y_sort_enabled = true
+
+[node name="Bush" parent="SceneObjects/Objects/Bushes" instance=ExtResource("14_kbes1")]
+position = Vector2(140, 204)
+
+[node name="Bush2" parent="SceneObjects/Objects/Bushes" instance=ExtResource("14_kbes1")]
+position = Vector2(187, 175)
+
+[node name="Powerline2" parent="SceneObjects/Objects" instance=ExtResource("15_j40nm")]
+position = Vector2(67, 308)
+
+[node name="Column4" parent="SceneObjects/Objects" instance=ExtResource("16_m46wl")]
+position = Vector2(105, 174)
+
+[node name="Column1" parent="SceneObjects/Objects" instance=ExtResource("17_jl14r")]
+position = Vector2(215, 118)
+
+[node name="Rock2" parent="SceneObjects/Objects" instance=ExtResource("18_iqcub")]
+position = Vector2(99, 290)
+
+[node name="Grass" type="Node2D" parent="SceneObjects/Objects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrass" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(196, 274)
+
+[node name="InteractiveGrass5" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(102, 302)
+
+[node name="InteractiveGrass6" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(99, 305)
+
+[node name="InteractiveGrass7" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(65, 312)
+
+[node name="InteractiveGrass2" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(191, 276)
+
+[node name="InteractiveGrass8" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(99, 181)
+
+[node name="InteractiveGrass9" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(103, 184)
+
+[node name="InteractiveGrass10" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(208, 123)
+
+[node name="InteractiveGrass11" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(204, 127)
+
+[node name="InteractiveGrass12" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(210, 131)
+
+[node name="InteractiveGrass13" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(201, 122)
+
+[node name="InteractiveGrass14" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(271, 144)
+
+[node name="InteractiveGrass15" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(266, 148)
+
+[node name="InteractiveGrass16" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(270, 152)
+
+[node name="InteractiveGrass3" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(190, 272)
+
+[node name="InteractiveGrass4" parent="SceneObjects/Objects/Grass" instance=ExtResource("18_y742a")]
+position = Vector2(185, 276)
+
+[node name="Lamppost" parent="SceneObjects/Objects" instance=ExtResource("19_omnoy")]
+position = Vector2(111, 187)
+
+[node name="Lamppost2" parent="SceneObjects/Objects" instance=ExtResource("19_omnoy")]
+position = Vector2(219, 128)
+
+[node name="Lamppost3" parent="SceneObjects/Objects" instance=ExtResource("19_omnoy")]
+position = Vector2(354, 132)
+
+[node name="LoaderArea" parent="." instance=ExtResource("20_wd6y8")]
+position = Vector2(103, 354)
+levelToGoToId = 1
+idLocation = 1
+
+[node name="CollisionShape2D" parent="LoaderArea" index="0"]
+shape = SubResource("RectangleShape2D_b816o")
+
+[node name="LoaderArea2" parent="." instance=ExtResource("20_wd6y8")]
+position = Vector2(400, 141)
+levelToGoToId = 3
+
+[node name="CollisionShape2D" parent="LoaderArea2" index="0"]
+position = Vector2(-9.5, 2.5)
+shape = SubResource("RectangleShape2D_3li1g")
+
+[node name="LoaderArea3" parent="." instance=ExtResource("20_wd6y8")]
+position = Vector2(36, 188)
+levelToGoToId = 4
+
+[node name="CollisionShape2D" parent="LoaderArea3" index="0"]
+position = Vector2(-9.5, 2.5)
+shape = SubResource("RectangleShape2D_3li1g")
+
+[node name="LoaderArea4" parent="." instance=ExtResource("20_wd6y8")]
+position = Vector2(279, 30)
+levelToGoToId = 6
+
+[node name="CollisionShape2D" parent="LoaderArea4" index="0"]
+position = Vector2(-12.5, 0)
+shape = SubResource("RectangleShape2D_b816o")
+
+[node name="LevelLoadLocation" parent="." instance=ExtResource("21_50u1e")]
+position = Vector2(114, 330)
+
+[node name="LevelLoadLocation2" parent="." instance=ExtResource("21_50u1e")]
+position = Vector2(362, 147)
+id = 1
+
+[node name="LevelLoadLocation3" parent="." instance=ExtResource("21_50u1e")]
+position = Vector2(56, 191)
+id = 2
+
+[node name="LevelLoadLocation4" parent="." instance=ExtResource("21_50u1e")]
+position = Vector2(280, 52)
+id = 3
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-33, 300.25)
+shape = SubResource("RectangleShape2D_it3fa")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-34, 81)
+shape = SubResource("RectangleShape2D_it3fa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(454, 60.25)
+shape = SubResource("RectangleShape2D_bja83")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(453, 290)
+shape = SubResource("RectangleShape2D_ekl6x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(273.5, 386)
+shape = SubResource("RectangleShape2D_lsnd2")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(39.5, 383)
+shape = SubResource("RectangleShape2D_b6ve0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(116, -4)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(361.5, -3)
+shape = SubResource("RectangleShape2D_xrl8e")
+
+[editable path="CameraPoints"]
+[editable path="LoaderArea"]
+[editable path="LoaderArea2"]
+[editable path="LoaderArea3"]
+[editable path="LoaderArea4"]

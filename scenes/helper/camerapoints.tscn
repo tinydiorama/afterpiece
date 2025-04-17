@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cob6ea24wkt40"]
+
+[node name="CameraPoints" type="Node"]
+
+[node name="TopLeft" type="Marker2D" parent="."]
+position = Vector2(-160, -90)
+
+[node name="BottomRight" type="Marker2D" parent="."]
+position = Vector2(160, 90)

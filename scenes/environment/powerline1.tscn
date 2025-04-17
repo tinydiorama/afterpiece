@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://djp5wxfxt0cqb"]
+
+[ext_resource type="Texture2D" uid="uid://d0mm3uvo4v4ea" path="res://assets/environment/treeshadow2.png" id="2_uy4ge"]
+[ext_resource type="Texture2D" uid="uid://c0q50udu7xnve" path="res://assets/environment/powerline1.png" id="2_w5n1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(7, 8)
+
+[node name="Powerline1" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Treeshadow2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1, 3)
+texture = ExtResource("2_uy4ge")
+
+[node name="Powerline1" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+texture = ExtResource("2_w5n1t")
+offset = Vector2(2.655, -15.96)

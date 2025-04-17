@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://68hdilc0gbcd"]
+
+[ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_d0ku7"]
+[ext_resource type="Texture2D" uid="uid://cy4sw46ngimjv" path="res://assets/ui/heart-empty.png" id="2_psbo5"]
+[ext_resource type="Texture2D" uid="uid://baodtjj3t71tw" path="res://assets/ui/heart-full.png" id="3_k15yd"]
+[ext_resource type="Texture2D" uid="uid://dvwslu4dmbtml" path="res://assets/ui/time-bg.png" id="4_48e6q"]
+[ext_resource type="Texture2D" uid="uid://c1ihve7l58dyx" path="res://assets/ui/time-progress.png" id="5_wih43"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_d0ku7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeartsDisplay" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeartsEmpty" type="TextureRect" parent="MarginContainer/HBoxContainer/HeartsDisplay"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 8.0
+scale = Vector2(4, 4)
+texture = ExtResource("2_psbo5")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="HeartsFull" type="TextureRect" parent="MarginContainer/HBoxContainer/HeartsDisplay"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 8.0
+scale = Vector2(4, 4)
+texture = ExtResource("3_k15yd")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="TimeDisplay" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeBG" type="TextureRect" parent="MarginContainer/HBoxContainer/TimeDisplay"]
+layout_mode = 1
+offset_left = -30.0
+offset_right = 78.0
+offset_bottom = 5.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_48e6q")
+stretch_mode = 2
+
+[node name="TimeIndicator" type="TextureRect" parent="MarginContainer/HBoxContainer/TimeDisplay/TimeBG"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 5.0
+offset_bottom = 6.0
+texture = ExtResource("5_wih43")
+stretch_mode = 2
+
+[node name="MenusDisplay" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

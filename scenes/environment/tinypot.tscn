@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqdeedsvmvkaj"]
+
+[ext_resource type="Texture2D" uid="uid://cipv3mvj46ktd" path="res://assets/environment/tinypot.png" id="1_3yjsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(10, 7)
+
+[node name="TinyPot" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Tinypot" type="Sprite2D" parent="."]
+texture = ExtResource("1_3yjsq")

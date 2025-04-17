@@ -1,0 +1,213 @@
+[gd_scene load_steps=28 format=3 uid="uid://dsu6eigx5p1q4"]
+
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_jd3y7"]
+[ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="2_472vq"]
+[ext_resource type="Texture2D" uid="uid://bqctm83vcffrr" path="res://assets/environment/8-wastesentrance.png" id="3_0wnxj"]
+[ext_resource type="Texture2D" uid="uid://cn6nw4e8kqn7u" path="res://assets/environment/8-wastespath.png" id="4_k34s1"]
+[ext_resource type="Texture2D" uid="uid://u8qt1c5woqd8" path="res://assets/environment/8-wastesentrancesprite.png" id="5_uur1r"]
+[ext_resource type="PackedScene" uid="uid://b3fmbb54r0t5f" path="res://scenes/environment/tree1_desert.tscn" id="8_o7ihw"]
+[ext_resource type="PackedScene" uid="uid://2pschbvlx813" path="res://scenes/environment/tree2_desert.tscn" id="9_2d7nv"]
+[ext_resource type="PackedScene" uid="uid://dxv0g8h3om23a" path="res://scenes/environment/interactive_grass_desert1.tscn" id="10_cax1k"]
+[ext_resource type="PackedScene" uid="uid://d1d1b2xaym8tl" path="res://scenes/environment/interactive_grass_desert2.tscn" id="11_0gda2"]
+[ext_resource type="PackedScene" uid="uid://dtiig35kiia8r" path="res://scenes/environment/rock1.tscn" id="11_keceh"]
+[ext_resource type="PackedScene" uid="uid://egneb2ewburh" path="res://scenes/environment/rock2.tscn" id="12_spkee"]
+[ext_resource type="PackedScene" uid="uid://hu1hn2nmqiol" path="res://scenes/environment/interactive_grass_desert3.tscn" id="12_tnnfq"]
+[ext_resource type="PackedScene" uid="uid://d3qbq62ch4un1" path="res://scenes/environment/rock3.tscn" id="13_58ith"]
+[ext_resource type="PackedScene" uid="uid://xlcwm25vducq" path="res://scenes/environment/rock4.tscn" id="14_q43xb"]
+[ext_resource type="PackedScene" uid="uid://djp5wxfxt0cqb" path="res://scenes/environment/powerline1.tscn" id="15_sukkm"]
+[ext_resource type="Texture2D" uid="uid://b8kavqc7wt37" path="res://assets/environment/treeshadow-desert1.png" id="16_pg41v"]
+[ext_resource type="PackedScene" uid="uid://csb6hg2cipb5" path="res://scenes/environment/interactive_grass_desert4.tscn" id="16_wc2pk"]
+[ext_resource type="PackedScene" uid="uid://83kcp8c0aomw" path="res://scenes/environment/tree_3.tscn" id="20_fs0q4"]
+[ext_resource type="PackedScene" uid="uid://d4ab4lg3t7hoj" path="res://scenes/environment/bush.tscn" id="21_d78q8"]
+[ext_resource type="Texture2D" uid="uid://bav2o2o5kvm1f" path="res://assets/environment/desertstone1.png" id="21_m06nb"]
+[ext_resource type="Texture2D" uid="uid://dok3i4wyp2ir8" path="res://assets/environment/desertstone2.png" id="22_qwsi5"]
+[ext_resource type="Texture2D" uid="uid://baclknpd2gl3x" path="res://assets/environment/desertstone3.png" id="23_6p67q"]
+[ext_resource type="PackedScene" uid="uid://ov3bqtgtxem2" path="res://scenes/helper/loader_area.tscn" id="27_us00w"]
+[ext_resource type="PackedScene" uid="uid://c6yu7veap5ong" path="res://scenes/helper/level_load_location.tscn" id="28_v4amc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b816o"]
+size = Vector2(23, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ytkg"]
+size = Vector2(111, 387.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl4m8"]
+size = Vector2(386, 60)
+
+[node name="8WastesEntrance" type="Node2D" node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
+script = ExtResource("1_jd3y7")
+id = 8
+allLevelLocations = [NodePath("LevelLoadLocation"), NodePath("LevelLoadLocation2")]
+characterRoot = NodePath("SceneObjects")
+cameraTopLeft = NodePath("CameraPoints/TopLeft")
+cameraBottomRight = NodePath("CameraPoints/BottomRight")
+
+[node name="CameraPoints" parent="." instance=ExtResource("2_472vq")]
+
+[node name="TopLeft" parent="CameraPoints" index="0"]
+position = Vector2(21, 25)
+
+[node name="BottomRight" parent="CameraPoints" index="1"]
+position = Vector2(364, 210)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(189, 165)
+texture = ExtResource("3_0wnxj")
+
+[node name="8-wastespath" type="Sprite2D" parent="Background"]
+position = Vector2(1, 1)
+texture = ExtResource("4_k34s1")
+
+[node name="8-wastesentrancesprite" type="Sprite2D" parent="Background"]
+position = Vector2(2, 3)
+texture = ExtResource("5_uur1r")
+
+[node name="Desertstone1" type="Sprite2D" parent="Background"]
+position = Vector2(11, -9)
+texture = ExtResource("21_m06nb")
+
+[node name="Desertstone2" type="Sprite2D" parent="Background"]
+position = Vector2(31, 0)
+texture = ExtResource("22_qwsi5")
+
+[node name="Desertstone3" type="Sprite2D" parent="Background"]
+position = Vector2(13, 14)
+texture = ExtResource("23_6p67q")
+
+[node name="Desertstone4" type="Sprite2D" parent="Background"]
+position = Vector2(-20, -2)
+texture = ExtResource("22_qwsi5")
+
+[node name="SceneObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Tree1-Desert" parent="SceneObjects/Trees" instance=ExtResource("8_o7ihw")]
+position = Vector2(265, 132)
+
+[node name="Tree1-Desert2" parent="SceneObjects/Trees" instance=ExtResource("8_o7ihw")]
+position = Vector2(310, 238)
+
+[node name="Tree1-Desert3" parent="SceneObjects/Trees" instance=ExtResource("8_o7ihw")]
+position = Vector2(279, 258)
+
+[node name="Tree2Desert" parent="SceneObjects/Trees" instance=ExtResource("9_2d7nv")]
+position = Vector2(137, 216)
+
+[node name="Tree2Desert2" parent="SceneObjects/Trees" instance=ExtResource("9_2d7nv")]
+position = Vector2(277, 142)
+
+[node name="Tree2Desert3" parent="SceneObjects/Trees" instance=ExtResource("9_2d7nv")]
+position = Vector2(320, 244)
+
+[node name="Tree1" parent="SceneObjects/Trees" instance=ExtResource("20_fs0q4")]
+position = Vector2(25, 134)
+
+[node name="Bushes" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Bush" parent="SceneObjects/Bushes" instance=ExtResource("21_d78q8")]
+position = Vector2(210, 256)
+
+[node name="Grass" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrassDesert1" parent="SceneObjects/Grass" instance=ExtResource("10_cax1k")]
+position = Vector2(157, 126)
+
+[node name="InteractiveGrassDesert7" parent="SceneObjects/Grass" instance=ExtResource("10_cax1k")]
+position = Vector2(255, 237)
+
+[node name="InteractiveGrassDesert8" parent="SceneObjects/Grass" instance=ExtResource("10_cax1k")]
+position = Vector2(252, 233)
+
+[node name="InteractiveGrassDesert9" parent="SceneObjects/Grass" instance=ExtResource("10_cax1k")]
+position = Vector2(260, 231)
+
+[node name="InteractiveGrassDesert2" parent="SceneObjects/Grass" instance=ExtResource("11_0gda2")]
+position = Vector2(86, 149)
+
+[node name="InteractiveGrassDesert4" parent="SceneObjects/Grass" instance=ExtResource("11_0gda2")]
+position = Vector2(81, 181)
+
+[node name="InteractiveGrassDesert5" parent="SceneObjects/Grass" instance=ExtResource("11_0gda2")]
+position = Vector2(86, 179)
+
+[node name="InteractiveGrassDesert3" parent="SceneObjects/Grass" instance=ExtResource("12_tnnfq")]
+position = Vector2(266, 146)
+
+[node name="InteractiveGrassDesert6" parent="SceneObjects/Grass" instance=ExtResource("12_tnnfq")]
+position = Vector2(272, 149)
+
+[node name="InteractiveGrassDesert10" parent="SceneObjects/Grass" instance=ExtResource("16_wc2pk")]
+position = Vector2(263, 152)
+
+[node name="InteractiveGrassDesert11" parent="SceneObjects/Grass" instance=ExtResource("16_wc2pk")]
+position = Vector2(142, 224)
+
+[node name="Rock1" parent="SceneObjects" instance=ExtResource("11_keceh")]
+position = Vector2(152, 222)
+
+[node name="Rock2" parent="SceneObjects" instance=ExtResource("12_spkee")]
+position = Vector2(143, 230)
+
+[node name="Rock3" parent="SceneObjects" instance=ExtResource("13_58ith")]
+position = Vector2(241, 125)
+
+[node name="Rock4" parent="SceneObjects" instance=ExtResource("14_q43xb")]
+position = Vector2(274, 154)
+
+[node name="Powerline1" parent="SceneObjects" instance=ExtResource("15_sukkm")]
+position = Vector2(273, 114)
+
+[node name="Treeshadow2" parent="SceneObjects/Powerline1" index="1"]
+texture = ExtResource("16_pg41v")
+
+[node name="LoaderArea" parent="." instance=ExtResource("27_us00w")]
+position = Vector2(36, 142)
+levelToGoToId = 3
+idLocation = 1
+
+[node name="CollisionShape2D" parent="LoaderArea" index="0"]
+position = Vector2(-28.5, 14)
+shape = SubResource("RectangleShape2D_b816o")
+
+[node name="LoaderArea2" parent="." instance=ExtResource("27_us00w")]
+position = Vector2(366, 148)
+levelToGoToId = 9
+
+[node name="CollisionShape2D" parent="LoaderArea2" index="0"]
+shape = SubResource("RectangleShape2D_b816o")
+
+[node name="LevelLoadLocation" parent="." instance=ExtResource("28_v4amc")]
+position = Vector2(33, 157)
+
+[node name="LevelLoadLocation2" parent="." instance=ExtResource("28_v4amc")]
+position = Vector2(344, 149)
+id = 1
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-51, 195)
+shape = SubResource("RectangleShape2D_2ytkg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(431, 188)
+shape = SubResource("RectangleShape2D_2ytkg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(188, 358)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(191, -29)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[editable path="CameraPoints"]
+[editable path="SceneObjects/Powerline1"]
+[editable path="LoaderArea"]
+[editable path="LoaderArea2"]

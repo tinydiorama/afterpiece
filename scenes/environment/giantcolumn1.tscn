@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://excdmor5a5r6"]
+
+[ext_resource type="Texture2D" uid="uid://dhnbkeg4fq224" path="res://assets/environment/giantcolumn1.png" id="1_ga8jm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(30, 22)
+
+[node name="GiantColumn1" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Giantcolumn1" type="Sprite2D" parent="."]
+texture = ExtResource("1_ga8jm")
+offset = Vector2(2.015, -45.355)

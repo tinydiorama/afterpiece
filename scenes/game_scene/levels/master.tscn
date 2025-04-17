@@ -1,0 +1,529 @@
+[gd_scene load_steps=43 format=3 uid="uid://xo2wgk4ueth5"]
+
+[ext_resource type="PackedScene" uid="uid://td5iqd47nypq" path="res://scenes/helper/camera_2d.tscn" id="1_8a3os"]
+[ext_resource type="Texture2D" uid="uid://dmmf7px6dhp8g" path="res://assets/environment/background.png" id="2_xxdmk"]
+[ext_resource type="Script" path="res://scenes/helper/master_level_controller.gd" id="3_2knoa"]
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="3_mr1bu"]
+[ext_resource type="Texture2D" uid="uid://cnevfwytlf7g6" path="res://assets/environment/0-clearing.png" id="3_tqm3w"]
+[ext_resource type="Texture2D" uid="uid://ct48gn8mwyv08" path="res://assets/environment/0-stonestarting.png" id="4_qml6f"]
+[ext_resource type="PackedScene" uid="uid://bm164hgj63gpd" path="res://scenes/player/player.tscn" id="5_1pxlx"]
+[ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="6_1wjaw"]
+[ext_resource type="PackedScene" uid="uid://f5nk41k4ue" path="res://scenes/environment/tree_2.tscn" id="6_2n1i7"]
+[ext_resource type="PackedScene" uid="uid://jva70o3wlx4d" path="res://scenes/environment/tree_1.tscn" id="7_v0qmf"]
+[ext_resource type="PackedScene" uid="uid://83kcp8c0aomw" path="res://scenes/environment/tree_3.tscn" id="8_w77wy"]
+[ext_resource type="PackedScene" uid="uid://d4ab4lg3t7hoj" path="res://scenes/environment/bush.tscn" id="9_pvy06"]
+[ext_resource type="Texture2D" uid="uid://beimqujolhqrg" path="res://assets/environment/arch-top.png" id="10_canuh"]
+[ext_resource type="Texture2D" uid="uid://cm40egnc854q4" path="res://assets/environment/arch-bottom.png" id="11_igrp7"]
+[ext_resource type="PackedScene" uid="uid://dnb7s7recotwj" path="res://scenes/environment/interactive_grass.tscn" id="12_uysah"]
+[ext_resource type="PackedScene" uid="uid://ov3bqtgtxem2" path="res://scenes/helper/loader_area.tscn" id="14_jbhmo"]
+[ext_resource type="PackedScene" uid="uid://c6yu7veap5ong" path="res://scenes/helper/level_load_location.tscn" id="15_8554v"]
+[ext_resource type="PackedScene" uid="uid://dd757sehxa5ic" path="res://scenes/helper/day_night_cycle.tscn" id="16_xk61y"]
+[ext_resource type="PackedScene" uid="uid://cykqfpm6fq6d2" path="res://scenes/game_scene/subscenes/1-southwestpath.tscn" id="18_31mqn"]
+[ext_resource type="PackedScene" uid="uid://cg6weymfhvmxl" path="res://scenes/helper/pickup.tscn" id="19_svvq0"]
+[ext_resource type="Texture2D" uid="uid://cy4sw46ngimjv" path="res://assets/ui/heart-empty.png" id="20_dvkk2"]
+[ext_resource type="PackedScene" uid="uid://m26xii8ufi2h" path="res://scenes/game_scene/subscenes/2-townentrancejunction.tscn" id="20_w6eq4"]
+[ext_resource type="Resource" uid="uid://cxyudy4ukn6ra" path="res://scripts/inventory/items/test.tres" id="20_yyj61"]
+[ext_resource type="PackedScene" uid="uid://d0n35egw34wau" path="res://scenes/game_scene/subscenes/3-townleft.tscn" id="21_12q07"]
+[ext_resource type="PackedScene" uid="uid://bl7sw0jjubqbc" path="res://scenes/game_scene/subscenes/4-dungeonpath.tscn" id="22_ewv6h"]
+[ext_resource type="PackedScene" uid="uid://ddxgdwee1y87n" path="res://scenes/game_scene/subscenes/5-dungeonpath2.tscn" id="23_v1u4t"]
+[ext_resource type="PackedScene" uid="uid://dnvx8g2r5hutr" path="res://scenes/game_scene/subscenes/6-northwestclearing.tscn" id="24_g3u3m"]
+[ext_resource type="PackedScene" uid="uid://4n6qkjk71cj" path="res://scenes/game_scene/subscenes/7-dungeon2entrance.tscn" id="28_enbal"]
+[ext_resource type="PackedScene" uid="uid://dsu6eigx5p1q4" path="res://scenes/game_scene/subscenes/8-wastesentrance.tscn" id="29_78nc0"]
+[ext_resource type="PackedScene" uid="uid://co5pwmh7l7tl1" path="res://scenes/environment/lamp-hanging.tscn" id="29_hhi5a"]
+[ext_resource type="PackedScene" uid="uid://djppri5c2hq8" path="res://scenes/game_scene/subscenes/9-mainwastes.tscn" id="31_j8w61"]
+
+[sub_resource type="Animation" id="Animation_kicen"]
+resource_name = "fade"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingScreen/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("LoadingScreen/ColorRect/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k7no2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingScreen/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LoadingScreen/ColorRect/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fthnt"]
+_data = {
+&"fade": SubResource("Animation_kicen"),
+&"RESET": SubResource("Animation_k7no2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80qtr"]
+size = Vector2(58, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uj6j"]
+size = Vector2(5, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsad2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ft5"]
+size = Vector2(111, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twe4d"]
+size = Vector2(242.5, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcx6b"]
+size = Vector2(181.25, 60)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2gwfd"]
+vertices = PackedVector2Array(12.1328, 210.453, -196.523, 221.43, -194.43, 174, 13.9297, 174, 310.594, 32.5938, 400.672, 27.5781, 397.703, 128, 465.227, 128, 462.68, 162.438, 401, 165.477, 144.43, 364.148, 63.5625, 369.594, 10.1328, 371.609, 218.742, 30.1016, 142.43, 408.898, 61.5313, 408.102, 220.742, -46, 313.609, -46, 14.9297, 28.0938, 401, 360.148)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(9, 10, 11, 12, 0, 3, 13, 4, 6), PackedInt32Array(14, 15, 11, 10), PackedInt32Array(16, 17, 4, 13), PackedInt32Array(3, 18, 13), PackedInt32Array(9, 19, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(472, 172, 476, 118, 408, 118, 411, 17, 321, 22, 324, -56, 211, -56, 209, 20, 5, 18, 4, 164, -204, 164, -207, 232, 2, 221, 0, 382, 53, 380, 51, 418, 152, 419, 154, 374, 411, 370, 411, 175)])
+source_geometry_mode = 1
+source_geometry_group_name = &"Navigation"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ao0wk"]
+vertices = PackedVector2Array(1037, -785.758, 1040, -780, 1032, -780, 1005, -783, 1031.88, -787.117, 910, -706, 938, -711, 941, -711, 941, -696.5, 919.5, -696.5, 1029, -635, 1223.96, -600.938, 843.141, -598.047, 1003, -635, 1222.03, -945.781, 1122.24, -695, 1120.88, -700.117, 1116.5, -755, 1116.5, -777, 1052, -662, 1084.5, -662, 1029, -657, 1117.12, -703.883, 893, -792, 916.117, -793.883, 917.5, -792.5, 917.5, -772.5, 900.5, -743.5, 869.5, -743.5, 1080.5, -832.5, 1080.5, -859.5, 1110, -807, 1089, -807, 1120.88, -689.883, 1112, -705.242, 927, -821, 927, -808.703, 925, -809.242, 1024, -799, 1027.56, -799, 1026.76, -796, 1040, -786.547, 1028.12, -790.883, 1005, -806, 1024, -817, 999, -836, 1005.5, -841.5, 914.758, -799, 893, -810, 916.117, -804.117, 910, -729, 938, -747, 1005.5, -868.5, 1032, -846, 1032, -824, 873, -792, 846.141, -751.078, 758.188, -750.078, 759.813, -809.156, 843.063, -811.172, 873, -810, 982.5, -876, 982.5, -898, 1034.5, -876.5, 1094, -777, 1094, -785, 1110, -785, 1089, -797, 1087, -797, 1087, -805, 1044, -805, 1044, -817, 1064.5, -824, 999, -806, 933, -836, 933, -821, 929, -772.5, 929, -772, 949, -772, 949, -783, 959, -783, 959, -788, 965, -788, 965, -797, 967, -797, 967, -791, 982, -791, 982, -783, 1013, -750, 1032, -759, 1040, -759, 1040, -758, 1013, -732, 1068, -758, 1068, -753, 1092, -753, 1092, -755, 1084.5, -715.5, 1053.5, -715.5, 993, -750, 993, -747, 900.5, -729, 869.5, -716.5, 887, -716.5, 887, -706, 919.5, -680, 905, -680, 905, -658, 931, -658, 931, -647, 963.5, -669, 937.5, -669, 937.5, -669.5, 950.5, -669.5, 950.5, -682, 992, -682, 992, -711, 1006, -711, 1030.5, -697.5, 1026, -688, 1006, -732, 1053.5, -697.5, 1084.5, -684, 1061.5, -684, 1061.5, -688.5, 1084.5, -688.5, 1030.5, -688, 1046, -670, 1046, -670.5, 1052, -670.5, 1026, -670, 1003, -657, 1065.5, -859.5, 1065.5, -876.5, 950, -898, 950, -889.5, 929.5, -889.5, 842.047, -934.203, 960.5, -862.5, 960.5, -876, 974.5, -868.5, 1034.5, -849.5, 1049.5, -849.5, 1049.5, -846, 974.5, -841.5, 1064.5, -832.5, 929.5, -862.5, 1117.12, -686.117, 1112, -684.758, 1106.88, -686.117, 1103.12, -689.883, 1101.76, -695, 1103.12, -700.117, 1106.88, -703.883, 963.5, -647, 919.883, -807.883)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 11, 15, 16, 17, 18), PackedInt32Array(19, 20, 11, 10, 21), PackedInt32Array(17, 16, 22), PackedInt32Array(23, 24, 25, 26, 27, 28), PackedInt32Array(29, 30, 14, 31, 32), PackedInt32Array(33, 15, 11), PackedInt32Array(17, 22, 34), PackedInt32Array(35, 36, 37), PackedInt32Array(38, 39, 40), PackedInt32Array(0, 41, 1), PackedInt32Array(42, 4, 3, 43), PackedInt32Array(40, 42, 43, 38), PackedInt32Array(44, 38, 43, 45, 46), PackedInt32Array(47, 24, 23, 48), PackedInt32Array(49, 47, 48), PackedInt32Array(6, 5, 50, 51), PackedInt32Array(46, 52, 53, 54, 44), PackedInt32Array(55, 56, 57, 58, 59, 60), PackedInt32Array(61, 62, 63, 52), PackedInt32Array(18, 64, 65, 66), PackedInt32Array(14, 18, 66, 31), PackedInt32Array(32, 67, 68, 69), PackedInt32Array(69, 70, 71, 72, 32), PackedInt32Array(43, 73, 45), PackedInt32Array(74, 75, 35), PackedInt32Array(26, 76, 77, 27), PackedInt32Array(78, 79, 80), PackedInt32Array(80, 81, 82), PackedInt32Array(82, 83, 84, 85), PackedInt32Array(82, 85, 86, 87, 51), PackedInt32Array(88, 89, 90, 91, 92), PackedInt32Array(91, 93, 94, 92), PackedInt32Array(95, 96, 17), PackedInt32Array(92, 95, 17, 97, 98), PackedInt32Array(94, 95, 92), PackedInt32Array(99, 100, 51, 87), PackedInt32Array(51, 50, 101, 27, 77, 78), PackedInt32Array(102, 103, 104), PackedInt32Array(5, 9, 105, 106, 104), PackedInt32Array(107, 108, 109, 12), PackedInt32Array(110, 111, 112, 113), PackedInt32Array(113, 114, 115, 110), PackedInt32Array(115, 116, 117, 118, 119), PackedInt32Array(118, 117, 120, 92, 98, 121), PackedInt32Array(122, 123, 124, 125), PackedInt32Array(118, 126, 119), PackedInt32Array(127, 128, 129, 19), PackedInt32Array(130, 127, 19, 21, 131), PackedInt32Array(30, 132, 133, 14), PackedInt32Array(134, 135, 136, 137), PackedInt32Array(138, 139, 61, 140), PackedInt32Array(141, 142, 143, 53), PackedInt32Array(141, 53, 52, 63), PackedInt32Array(61, 52, 140), PackedInt32Array(138, 140, 144, 74), PackedInt32Array(72, 145, 29, 32), PackedInt32Array(54, 72, 71, 44), PackedInt32Array(144, 46, 45, 74), PackedInt32Array(146, 138, 74, 48, 60), PackedInt32Array(147, 33, 11), PackedInt32Array(147, 11, 20, 148), PackedInt32Array(148, 20, 122, 149), PackedInt32Array(150, 149, 122, 125), PackedInt32Array(151, 150, 125, 97), PackedInt32Array(152, 151, 97), PackedInt32Array(153, 152, 97, 17), PackedInt32Array(3, 2, 89, 88, 99, 87), PackedInt32Array(80, 82, 51, 78), PackedInt32Array(55, 23, 28, 56), PackedInt32Array(131, 13, 12, 154), PackedInt32Array(17, 34, 153), PackedInt32Array(110, 115, 119, 130, 131, 154), PackedInt32Array(109, 154, 12), PackedInt32Array(107, 12, 56, 102), PackedInt32Array(35, 37, 155, 48), PackedInt32Array(155, 49, 48), PackedInt32Array(74, 35, 48), PackedInt32Array(137, 136, 146, 60, 59), PackedInt32Array(104, 106, 107, 102), PackedInt32Array(28, 102, 56), PackedInt32Array(134, 137, 14, 62), PackedInt32Array(62, 14, 133, 63)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(835, -941, 836, -818, 753, -816, 751, -743, 839, -744, 836, -591, 1231, -594, 1229, -953)])
+source_geometry_mode = 1
+source_geometry_group_name = &"Navigation"
+agent_radius = 7.0
+
+[node name="Master" type="Node2D"]
+
+[node name="DayNightCycle" parent="." instance=ExtResource("16_xk61y")]
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player", "topLeft", "bottomRight") instance=ExtResource("1_8a3os")]
+position = Vector2(167, 90)
+player = NodePath("../Player")
+topLeft = NodePath("../0Start/CameraPoints/TopLeft")
+bottomRight = NodePath("../0Start/CameraPoints/BottomRight")
+
+[node name="MasterLevelController" type="Node2D" parent="." node_paths=PackedStringArray("allLevelManagers", "camera", "player")]
+script = ExtResource("3_2knoa")
+allLevelManagers = [NodePath("../0Start"), NodePath("../1SouthwestPath"), NodePath("../2TownEntranceJunction"), NodePath("../3TownLeft"), NodePath("../4DungeonPath"), NodePath("../5DungeonPath2"), NodePath("../6NorthwestClearing"), NodePath("../7Dungeon2Entrance"), NodePath("../8WastesEntrance"), NodePath("../9MainWastes")]
+camera = NodePath("../Camera2D")
+player = NodePath("../Player")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="MasterLevelController"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="MasterLevelController/LoadingScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="MasterLevelController/LoadingScreen/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MasterLevelController"]
+libraries = {
+&"": SubResource("AnimationLibrary_fthnt")
+}
+
+[node name="Player" parent="." instance=ExtResource("5_1pxlx")]
+position = Vector2(151, 103)
+
+[node name="0Start" type="Node2D" parent="." node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
+script = ExtResource("3_mr1bu")
+allLevelLocations = [NodePath("StartLocation"), NodePath("PathLocation")]
+characterRoot = NodePath("SceneObjects")
+cameraTopLeft = NodePath("CameraPoints/TopLeft")
+cameraBottomRight = NodePath("CameraPoints/BottomRight")
+
+[node name="StartLocation" parent="0Start" instance=ExtResource("15_8554v")]
+position = Vector2(151, 104)
+
+[node name="PathLocation" parent="0Start" instance=ExtResource("15_8554v")]
+position = Vector2(198, 28)
+id = 1
+
+[node name="LoaderArea" parent="0Start" instance=ExtResource("14_jbhmo")]
+position = Vector2(220, 4)
+levelToGoToId = 1
+
+[node name="CollisionShape2D" parent="0Start/LoaderArea" index="0"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_80qtr")
+
+[node name="CameraPoints" parent="0Start" instance=ExtResource("6_1wjaw")]
+
+[node name="TopLeft" parent="0Start/CameraPoints" index="0"]
+position = Vector2(1, 3)
+
+[node name="BottomRight" parent="0Start/CameraPoints" index="1"]
+position = Vector2(321, 183)
+
+[node name="Background" type="Sprite2D" parent="0Start"]
+z_index = -1
+position = Vector2(164, 113)
+texture = ExtResource("2_xxdmk")
+
+[node name="0-clearing" type="Sprite2D" parent="0Start/Background"]
+position = Vector2(-3, -23)
+texture = ExtResource("3_tqm3w")
+
+[node name="0-stonestarting" type="Sprite2D" parent="0Start/Background"]
+position = Vector2(-6, -5)
+texture = ExtResource("4_qml6f")
+
+[node name="SceneObjects" type="Node2D" parent="0Start" groups=["Navigation"]]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="0Start/SceneObjects"]
+y_sort_enabled = true
+
+[node name="Tree2" parent="0Start/SceneObjects/Trees" instance=ExtResource("6_2n1i7")]
+position = Vector2(110, 60)
+
+[node name="Tree1" parent="0Start/SceneObjects/Trees" instance=ExtResource("7_v0qmf")]
+position = Vector2(131, 50)
+
+[node name="Tree3" parent="0Start/SceneObjects/Trees" instance=ExtResource("7_v0qmf")]
+position = Vector2(86, 77)
+
+[node name="Tree4" parent="0Start/SceneObjects/Trees" instance=ExtResource("8_w77wy")]
+position = Vector2(228, 80)
+
+[node name="Tree5" parent="0Start/SceneObjects/Trees" instance=ExtResource("6_2n1i7")]
+position = Vector2(251, 100)
+
+[node name="Tree6" parent="0Start/SceneObjects/Trees" instance=ExtResource("7_v0qmf")]
+position = Vector2(227, 123)
+
+[node name="Tree7" parent="0Start/SceneObjects/Trees" instance=ExtResource("7_v0qmf")]
+position = Vector2(79, 129)
+
+[node name="Tree8" parent="0Start/SceneObjects/Trees" instance=ExtResource("8_w77wy")]
+position = Vector2(102, 106)
+
+[node name="Tree9" parent="0Start/SceneObjects/Trees" instance=ExtResource("6_2n1i7")]
+position = Vector2(104, 134)
+
+[node name="Tree10" parent="0Start/SceneObjects/Trees" instance=ExtResource("7_v0qmf")]
+position = Vector2(193, 170)
+
+[node name="Tree11" parent="0Start/SceneObjects/Trees" instance=ExtResource("6_2n1i7")]
+position = Vector2(138, 155)
+
+[node name="Bushes" type="Node2D" parent="0Start/SceneObjects"]
+y_sort_enabled = true
+
+[node name="Bush" parent="0Start/SceneObjects/Bushes" instance=ExtResource("9_pvy06")]
+position = Vector2(174, 78)
+
+[node name="Bush2" parent="0Start/SceneObjects/Bushes" instance=ExtResource("9_pvy06")]
+position = Vector2(115, 90)
+
+[node name="Arch" type="StaticBody2D" parent="0Start/SceneObjects"]
+position = Vector2(181, 64)
+
+[node name="Arch-top" type="Sprite2D" parent="0Start/SceneObjects/Arch"]
+z_index = 1
+position = Vector2(0, -24)
+texture = ExtResource("10_canuh")
+
+[node name="Arch-bottom" type="Sprite2D" parent="0Start/SceneObjects/Arch"]
+texture = ExtResource("11_igrp7")
+offset = Vector2(0, -5.875)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0Start/SceneObjects/Arch"]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_3uj6j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="0Start/SceneObjects/Arch"]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_3uj6j")
+
+[node name="Grass" type="Node2D" parent="0Start/SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrass" parent="0Start/SceneObjects/Grass" instance=ExtResource("12_uysah")]
+position = Vector2(152, 76)
+
+[node name="InteractiveGrass2" parent="0Start/SceneObjects/Grass" instance=ExtResource("12_uysah")]
+position = Vector2(147, 78)
+
+[node name="InteractiveGrass3" parent="0Start/SceneObjects/Grass" instance=ExtResource("12_uysah")]
+position = Vector2(146, 74)
+
+[node name="InteractiveGrass4" parent="0Start/SceneObjects/Grass" instance=ExtResource("12_uysah")]
+position = Vector2(141, 78)
+
+[node name="Grass2" type="Node2D" parent="0Start/SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrass" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(152, 76)
+
+[node name="InteractiveGrass5" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(197, 68)
+
+[node name="InteractiveGrass6" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(194, 71)
+
+[node name="InteractiveGrass7" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(201, 75)
+
+[node name="InteractiveGrass2" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(147, 78)
+
+[node name="InteractiveGrass3" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(146, 74)
+
+[node name="InteractiveGrass4" parent="0Start/SceneObjects/Grass2" instance=ExtResource("12_uysah")]
+position = Vector2(141, 78)
+
+[node name="Pickup" parent="0Start/SceneObjects" instance=ExtResource("19_svvq0")]
+visible = false
+position = Vector2(183, 97)
+collision_mask = 2
+itemToPickup = ExtResource("20_yyj61")
+
+[node name="CollisionShape2D" parent="0Start/SceneObjects/Pickup" index="0"]
+shape = SubResource("CircleShape2D_nsad2")
+
+[node name="Sprite2D" parent="0Start/SceneObjects/Pickup" index="1"]
+texture = ExtResource("20_dvkk2")
+
+[node name="Colliders" type="Node2D" parent="0Start"]
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="0Start/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0Start/Colliders/WorldBoundaries"]
+position = Vector2(41.5, 95)
+shape = SubResource("RectangleShape2D_q4ft5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="0Start/Colliders/WorldBoundaries"]
+position = Vector2(299, 43)
+shape = SubResource("RectangleShape2D_q4ft5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="0Start/Colliders/WorldBoundaries"]
+position = Vector2(213.75, 159)
+shape = SubResource("RectangleShape2D_twe4d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="0Start/Colliders/WorldBoundaries"]
+position = Vector2(97.375, -26)
+shape = SubResource("RectangleShape2D_wcx6b")
+
+[node name="1SouthwestPath" parent="." instance=ExtResource("18_31mqn")]
+position = Vector2(109, -504)
+
+[node name="TopLeft" parent="1SouthwestPath/CameraPoints" index="0"]
+position = Vector2(151, -464)
+
+[node name="BottomRight" parent="1SouthwestPath/CameraPoints" index="1"]
+position = Vector2(519, -132)
+
+[node name="2TownEntranceJunction" parent="." instance=ExtResource("20_w6eq4")]
+position = Vector2(293, -960)
+
+[node name="TopLeft" parent="2TownEntranceJunction/CameraPoints" index="0"]
+position = Vector2(315, -934)
+
+[node name="BottomRight" parent="2TownEntranceJunction/CameraPoints" index="1"]
+position = Vector2(691, -604)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="2TownEntranceJunction"]
+navigation_polygon = SubResource("NavigationPolygon_2gwfd")
+
+[node name="3TownLeft" parent="." instance=ExtResource("21_12q07")]
+position = Vector2(828, -997)
+
+[node name="TopLeft" parent="3TownLeft/CameraPoints" index="0"]
+position = Vector2(737, -958)
+
+[node name="BottomRight" parent="3TownLeft/CameraPoints" index="1"]
+position = Vector2(1218, -605)
+
+[node name="Interact" parent="3TownLeft/SceneObjects/Vanese" index="2"]
+collision_layer = 0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="3TownLeft"]
+position = Vector2(-820, 964)
+navigation_polygon = SubResource("NavigationPolygon_ao0wk")
+
+[node name="4DungeonPath" parent="." instance=ExtResource("22_ewv6h")]
+position = Vector2(-456, -928)
+
+[node name="TopLeft" parent="4DungeonPath/CameraPoints" index="0"]
+position = Vector2(-445, -920)
+
+[node name="BottomRight" parent="4DungeonPath/CameraPoints" index="1"]
+position = Vector2(-78, -644)
+
+[node name="5DungeonPath2" parent="." instance=ExtResource("23_v1u4t")]
+position = Vector2(-1149, -1157)
+
+[node name="TopLeft" parent="5DungeonPath2/CameraPoints" index="0"]
+position = Vector2(-1140, -1147)
+
+[node name="BottomRight" parent="5DungeonPath2/CameraPoints" index="1"]
+position = Vector2(-770, -733)
+
+[node name="6NorthwestClearing" parent="." instance=ExtResource("24_g3u3m")]
+position = Vector2(314, -1347)
+
+[node name="TopLeft" parent="6NorthwestClearing/CameraPoints" index="0"]
+position = Vector2(327, -1321)
+
+[node name="BottomRight" parent="6NorthwestClearing/CameraPoints" index="1"]
+position = Vector2(670, -1136)
+
+[node name="7Dungeon2Entrance" parent="." instance=ExtResource("28_enbal")]
+position = Vector2(-1136, -1820)
+
+[node name="TopLeft" parent="7Dungeon2Entrance/CameraPoints" index="0"]
+position = Vector2(-1130, -1801)
+
+[node name="BottomRight" parent="7Dungeon2Entrance/CameraPoints" index="1"]
+position = Vector2(-760, -1360)
+
+[node name="HangingLamp" parent="7Dungeon2Entrance/SceneObjects" index="10" instance=ExtResource("29_hhi5a")]
+position = Vector2(147, 85)
+
+[node name="HangingLamp2" parent="7Dungeon2Entrance/SceneObjects" index="11" instance=ExtResource("29_hhi5a")]
+position = Vector2(230, 84)
+
+[node name="CollisionShape2D4" parent="7Dungeon2Entrance/WorldBoundaries" index="1"]
+position = Vector2(385, 235)
+
+[node name="8WastesEntrance" parent="." instance=ExtResource("29_78nc0")]
+position = Vector2(1377, -962)
+
+[node name="TopLeft" parent="8WastesEntrance/CameraPoints" index="0"]
+position = Vector2(1381, -960)
+
+[node name="BottomRight" parent="8WastesEntrance/CameraPoints" index="1"]
+position = Vector2(1753, -634)
+
+[node name="9MainWastes" parent="." instance=ExtResource("31_j8w61")]
+position = Vector2(1878, -1078)
+
+[node name="TopLeft" parent="9MainWastes/CameraPoints" index="0"]
+position = Vector2(1882, -1073)
+
+[node name="BottomRight" parent="9MainWastes/CameraPoints" index="1"]
+position = Vector2(2593, -485)
+
+[editable path="Camera2D"]
+[editable path="0Start/LoaderArea"]
+[editable path="0Start/CameraPoints"]
+[editable path="0Start/SceneObjects/Pickup"]
+[editable path="1SouthwestPath"]
+[editable path="1SouthwestPath/CameraPoints"]
+[editable path="1SouthwestPath/LoaderArea"]
+[editable path="1SouthwestPath/LoaderArea2"]
+[editable path="2TownEntranceJunction"]
+[editable path="2TownEntranceJunction/CameraPoints"]
+[editable path="2TownEntranceJunction/LoaderArea"]
+[editable path="2TownEntranceJunction/LoaderArea2"]
+[editable path="2TownEntranceJunction/LoaderArea3"]
+[editable path="2TownEntranceJunction/LoaderArea4"]
+[editable path="3TownLeft"]
+[editable path="3TownLeft/CameraPoints"]
+[editable path="3TownLeft/LoaderArea"]
+[editable path="3TownLeft/LoaderArea2"]
+[editable path="4DungeonPath"]
+[editable path="4DungeonPath/CameraPoints"]
+[editable path="4DungeonPath/SceneObjects/Shortwall"]
+[editable path="4DungeonPath/SceneObjects/Shortwall2"]
+[editable path="4DungeonPath/SceneObjects/Shortwall3"]
+[editable path="4DungeonPath/LoaderArea"]
+[editable path="4DungeonPath/LoaderArea2"]
+[editable path="5DungeonPath2"]
+[editable path="5DungeonPath2/CameraPoints"]
+[editable path="5DungeonPath2/LoaderArea"]
+[editable path="5DungeonPath2/LoaderArea2"]
+[editable path="6NorthwestClearing"]
+[editable path="6NorthwestClearing/CameraPoints"]
+[editable path="6NorthwestClearing/LoaderArea"]
+[editable path="7Dungeon2Entrance"]
+[editable path="7Dungeon2Entrance/CameraPoints"]
+[editable path="7Dungeon2Entrance/LoaderArea"]
+[editable path="8WastesEntrance"]
+[editable path="8WastesEntrance/CameraPoints"]
+[editable path="8WastesEntrance/SceneObjects/Powerline1"]
+[editable path="8WastesEntrance/LoaderArea"]
+[editable path="8WastesEntrance/LoaderArea2"]
+[editable path="9MainWastes"]
+[editable path="9MainWastes/CameraPoints"]
+[editable path="9MainWastes/LoaderArea"]

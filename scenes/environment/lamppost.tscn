@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bymjreunmxky8"]
+
+[ext_resource type="Texture2D" uid="uid://bhmvmql4latk1" path="res://assets/environment/lamppost.png" id="1_2oesm"]
+[ext_resource type="Texture2D" uid="uid://cvsb77so15egb" path="res://assets/extra/light.png" id="2_euie6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(6, 4)
+
+[node name="Lamppost" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Lamppost" type="Sprite2D" parent="."]
+texture = ExtResource("1_2oesm")
+offset = Vector2(0, -9.04)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -17)
+color = Color(0.999999, 0.99821, 0.710989, 1)
+energy = 0.25
+texture = ExtResource("2_euie6")
+texture_scale = 0.1

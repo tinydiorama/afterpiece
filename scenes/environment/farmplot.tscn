@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4x7pkytlwv27"]
+
+[ext_resource type="Texture2D" uid="uid://cxoqv0cnnrpqv" path="res://assets/environment/farmplot.png" id="1_ki0m1"]
+[ext_resource type="Texture2D" uid="uid://t5o30tji3j4o" path="res://assets/environment/farmplot-dirt.png" id="2_i021y"]
+[ext_resource type="Texture2D" uid="uid://dfmmdl2etpom2" path="res://assets/environment/farmplot-dirt2.png" id="3_qo8qa"]
+[ext_resource type="Texture2D" uid="uid://i7551c826bqf" path="res://assets/environment/farmplant2.png" id="4_hiq33"]
+[ext_resource type="Texture2D" uid="uid://cmxfdcpc72ade" path="res://assets/environment/farmplant.png" id="5_gkirv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(37, 17)
+
+[node name="FarmPlot" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Farmplot" type="Sprite2D" parent="."]
+texture = ExtResource("1_ki0m1")
+
+[node name="Farmplot-dirt" type="Sprite2D" parent="Farmplot"]
+position = Vector2(-10, -5)
+texture = ExtResource("2_i021y")
+
+[node name="Farmplot-dirt3" type="Sprite2D" parent="Farmplot"]
+position = Vector2(-10, 2)
+texture = ExtResource("2_i021y")
+
+[node name="Farmplot-dirt4" type="Sprite2D" parent="Farmplot"]
+position = Vector2(13, -4)
+texture = ExtResource("2_i021y")
+
+[node name="Farmplot-dirt2" type="Sprite2D" parent="Farmplot"]
+position = Vector2(2, -5)
+texture = ExtResource("3_qo8qa")
+
+[node name="Farmplot-dirt5" type="Sprite2D" parent="Farmplot"]
+position = Vector2(1, 2)
+texture = ExtResource("3_qo8qa")
+
+[node name="Farmplot-dirt6" type="Sprite2D" parent="Farmplot"]
+position = Vector2(12, 2)
+texture = ExtResource("3_qo8qa")
+
+[node name="Farmplant2" type="Sprite2D" parent="Farmplot"]
+position = Vector2(-10, -7)
+texture = ExtResource("4_hiq33")
+
+[node name="Farmplant5" type="Sprite2D" parent="Farmplot"]
+position = Vector2(2, -6)
+texture = ExtResource("4_hiq33")
+
+[node name="Farmplant6" type="Sprite2D" parent="Farmplot"]
+position = Vector2(13, -6)
+texture = ExtResource("4_hiq33")
+
+[node name="Farmplant" type="Sprite2D" parent="Farmplot"]
+position = Vector2(-10, 0)
+texture = ExtResource("5_gkirv")
+
+[node name="Farmplant3" type="Sprite2D" parent="Farmplot"]
+position = Vector2(0, -1)
+texture = ExtResource("5_gkirv")
+
+[node name="Farmplant4" type="Sprite2D" parent="Farmplot"]
+position = Vector2(11, 0)
+texture = ExtResource("5_gkirv")

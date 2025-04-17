@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlq3e2vhausga"]
+
+[ext_resource type="Texture2D" uid="uid://bcdljdfigw710" path="res://assets/environment/sunlightdapples3.png" id="1_d6s6u"]
+
+[node name="Dapple3" type="PointLight2D"]
+color = Color(1, 1, 1, 0.254902)
+texture = ExtResource("1_d6s6u")

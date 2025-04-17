@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://di6453lfvq3nb"]
+
+[ext_resource type="Texture2D" uid="uid://dq58lsqdegunr" path="res://assets/environment/desertflag.png" id="1_qvy0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(6, 5)
+
+[node name="DesertFlag" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Desertflag" type="Sprite2D" parent="."]
+texture = ExtResource("1_qvy0i")
+offset = Vector2(2.085, -12.915)

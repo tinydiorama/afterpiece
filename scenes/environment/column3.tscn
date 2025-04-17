@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://chrcd0i7kkogj"]
+
+[ext_resource type="Texture2D" uid="uid://w4mdqitmfbvw" path="res://assets/environment/column3.png" id="1_mhh6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(12, 8)
+
+[node name="Column3" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Column3" type="Sprite2D" parent="."]
+texture = ExtResource("1_mhh6x")
+offset = Vector2(0, -3.9)

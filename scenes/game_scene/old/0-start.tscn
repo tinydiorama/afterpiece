@@ -1,0 +1,201 @@
+[gd_scene load_steps=21 format=3 uid="uid://cq1tu58rw1f1w"]
+
+[ext_resource type="PackedScene" uid="uid://td5iqd47nypq" path="res://scenes/helper/camera_2d.tscn" id="1_vxlva"]
+[ext_resource type="Texture2D" uid="uid://dmmf7px6dhp8g" path="res://assets/environment/background.png" id="2_r3q3j"]
+[ext_resource type="Texture2D" uid="uid://cnevfwytlf7g6" path="res://assets/environment/0-clearing.png" id="3_dixdh"]
+[ext_resource type="Texture2D" uid="uid://ct48gn8mwyv08" path="res://assets/environment/0-stonestarting.png" id="4_umanx"]
+[ext_resource type="PackedScene" uid="uid://bm164hgj63gpd" path="res://scenes/player/player.tscn" id="5_ffx5m"]
+[ext_resource type="PackedScene" uid="uid://f5nk41k4ue" path="res://scenes/environment/tree_2.tscn" id="6_2pb6h"]
+[ext_resource type="PackedScene" uid="uid://jva70o3wlx4d" path="res://scenes/environment/tree_1.tscn" id="7_0md3y"]
+[ext_resource type="PackedScene" uid="uid://83kcp8c0aomw" path="res://scenes/environment/tree_3.tscn" id="8_jr1k4"]
+[ext_resource type="PackedScene" uid="uid://d4ab4lg3t7hoj" path="res://scenes/environment/bush.tscn" id="9_jbnoh"]
+[ext_resource type="Texture2D" uid="uid://beimqujolhqrg" path="res://assets/environment/arch-top.png" id="10_ykklo"]
+[ext_resource type="Texture2D" uid="uid://cm40egnc854q4" path="res://assets/environment/arch-bottom.png" id="11_3tsqb"]
+[ext_resource type="PackedScene" uid="uid://dnb7s7recotwj" path="res://scenes/environment/interactive_grass.tscn" id="12_s66qv"]
+[ext_resource type="PackedScene" uid="uid://b4ml1kqedjkb2" path="res://scenes/helper/level_manager.tscn" id="13_827x4"]
+[ext_resource type="PackedScene" uid="uid://ov3bqtgtxem2" path="res://scenes/helper/loader_area.tscn" id="14_tgmeo"]
+[ext_resource type="PackedScene" uid="uid://c6yu7veap5ong" path="res://scenes/helper/level_load_location.tscn" id="15_8aano"]
+[ext_resource type="PackedScene" uid="uid://dd757sehxa5ic" path="res://scenes/helper/day_night_cycle.tscn" id="16_44rip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uj6j"]
+size = Vector2(5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ft5"]
+size = Vector2(111, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twe4d"]
+size = Vector2(242.5, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80qtr"]
+size = Vector2(58, 20)
+
+[node name="Start" type="Node2D"]
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_vxlva")]
+position = Vector2(167, 90)
+player = NodePath("../SceneObjects/Player")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(164, 113)
+texture = ExtResource("2_r3q3j")
+
+[node name="0-clearing" type="Sprite2D" parent="Background"]
+position = Vector2(-3, -23)
+texture = ExtResource("3_dixdh")
+
+[node name="0-stonestarting" type="Sprite2D" parent="Background"]
+position = Vector2(-6, -5)
+texture = ExtResource("4_umanx")
+
+[node name="SceneObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="SceneObjects" instance=ExtResource("5_ffx5m")]
+position = Vector2(151, 103)
+
+[node name="Trees" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Tree2" parent="SceneObjects/Trees" instance=ExtResource("6_2pb6h")]
+position = Vector2(110, 60)
+
+[node name="Tree1" parent="SceneObjects/Trees" instance=ExtResource("7_0md3y")]
+position = Vector2(131, 50)
+
+[node name="Tree3" parent="SceneObjects/Trees" instance=ExtResource("7_0md3y")]
+position = Vector2(86, 77)
+
+[node name="Tree4" parent="SceneObjects/Trees" instance=ExtResource("8_jr1k4")]
+position = Vector2(228, 80)
+
+[node name="Tree5" parent="SceneObjects/Trees" instance=ExtResource("6_2pb6h")]
+position = Vector2(251, 100)
+
+[node name="Tree6" parent="SceneObjects/Trees" instance=ExtResource("7_0md3y")]
+position = Vector2(227, 123)
+
+[node name="Tree7" parent="SceneObjects/Trees" instance=ExtResource("7_0md3y")]
+position = Vector2(79, 129)
+
+[node name="Tree8" parent="SceneObjects/Trees" instance=ExtResource("8_jr1k4")]
+position = Vector2(102, 106)
+
+[node name="Tree9" parent="SceneObjects/Trees" instance=ExtResource("6_2pb6h")]
+position = Vector2(104, 134)
+
+[node name="Tree10" parent="SceneObjects/Trees" instance=ExtResource("7_0md3y")]
+position = Vector2(193, 170)
+
+[node name="Tree11" parent="SceneObjects/Trees" instance=ExtResource("6_2pb6h")]
+position = Vector2(138, 155)
+
+[node name="Bushes" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Bush" parent="SceneObjects/Bushes" instance=ExtResource("9_jbnoh")]
+position = Vector2(174, 78)
+
+[node name="Bush2" parent="SceneObjects/Bushes" instance=ExtResource("9_jbnoh")]
+position = Vector2(115, 90)
+
+[node name="Arch" type="StaticBody2D" parent="SceneObjects"]
+position = Vector2(181, 64)
+
+[node name="Arch-top" type="Sprite2D" parent="SceneObjects/Arch"]
+z_index = 1
+position = Vector2(0, -24)
+texture = ExtResource("10_ykklo")
+
+[node name="Arch-bottom" type="Sprite2D" parent="SceneObjects/Arch"]
+texture = ExtResource("11_3tsqb")
+offset = Vector2(0, -5.875)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneObjects/Arch"]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_3uj6j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SceneObjects/Arch"]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_3uj6j")
+
+[node name="Grass" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrass" parent="SceneObjects/Grass" instance=ExtResource("12_s66qv")]
+position = Vector2(152, 76)
+
+[node name="InteractiveGrass2" parent="SceneObjects/Grass" instance=ExtResource("12_s66qv")]
+position = Vector2(147, 78)
+
+[node name="InteractiveGrass3" parent="SceneObjects/Grass" instance=ExtResource("12_s66qv")]
+position = Vector2(146, 74)
+
+[node name="InteractiveGrass4" parent="SceneObjects/Grass" instance=ExtResource("12_s66qv")]
+position = Vector2(141, 78)
+
+[node name="Grass2" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrass" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(152, 76)
+
+[node name="InteractiveGrass5" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(197, 68)
+
+[node name="InteractiveGrass6" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(194, 71)
+
+[node name="InteractiveGrass7" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(201, 75)
+
+[node name="InteractiveGrass2" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(147, 78)
+
+[node name="InteractiveGrass3" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(146, 74)
+
+[node name="InteractiveGrass4" parent="SceneObjects/Grass2" instance=ExtResource("12_s66qv")]
+position = Vector2(141, 78)
+
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/WorldBoundaries"]
+position = Vector2(41.5, 95)
+shape = SubResource("RectangleShape2D_q4ft5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Colliders/WorldBoundaries"]
+position = Vector2(299, 43)
+shape = SubResource("RectangleShape2D_q4ft5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliders/WorldBoundaries"]
+position = Vector2(213.75, 159)
+shape = SubResource("RectangleShape2D_twe4d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colliders/WorldBoundaries"]
+position = Vector2(128, -26)
+shape = SubResource("RectangleShape2D_twe4d")
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("allLevelLocations", "player", "levelCamera", "enemyRoot") instance=ExtResource("13_827x4")]
+allLevelLocations = [NodePath("LevelLoadLocation")]
+player = NodePath("../SceneObjects/Player")
+levelCamera = NodePath("../Camera2D")
+enemyRoot = NodePath("../SceneObjects")
+
+[node name="LoaderArea" parent="LevelManager" instance=ExtResource("14_tgmeo")]
+position = Vector2(220, 4)
+levelToGoToId = 1
+
+[node name="CollisionShape2D" parent="LevelManager/LoaderArea" index="0"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_80qtr")
+
+[node name="LevelLoadLocation" parent="LevelManager" instance=ExtResource("15_8aano")]
+position = Vector2(198, 28)
+
+[node name="DayNightCycle" parent="." instance=ExtResource("16_44rip")]
+
+[editable path="Camera2D"]
+[editable path="LevelManager/LoaderArea"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhij4rccq0ys3"]
+
+[ext_resource type="Script" path="res://scenes/hud/textbox.gd" id="1_ehxhk"]
+[ext_resource type="Texture2D" uid="uid://cjr7vqapbmhbp" path="res://assets/ui/dialog-9slice.png" id="1_vx7tv"]
+[ext_resource type="FontFile" uid="uid://bs13rwmaycnso" path="res://assets/fonts/Caroni-Regular.otf" id="3_bg7xa"]
+[ext_resource type="Texture2D" uid="uid://dnqy516ae7jvg" path="res://assets/ui/dialog-tail.png" id="3_p5hnc"]
+[ext_resource type="Texture2D" uid="uid://ypcjrg6t2v67" path="res://assets/ui/dialog-nextindicator.png" id="4_f8lok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fj6w"]
+atlas = ExtResource("4_f8lok")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrk7w"]
+atlas = ExtResource("4_f8lok")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohyak"]
+atlas = ExtResource("4_f8lok")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjpfj"]
+atlas = ExtResource("4_f8lok")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0i7ng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fj6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrk7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohyak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjpfj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Textbox" type="MarginContainer"]
+offset_right = 11.0
+offset_bottom = 23.0
+script = ExtResource("1_ehxhk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_vx7tv")
+region_rect = Rect2(0, 0, 72, 72)
+patch_margin_left = 8
+patch_margin_top = 9
+patch_margin_right = 8
+patch_margin_bottom = 13
+
+[node name="Tail" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Tail"]
+position = Vector2(19.5, 45)
+texture = ExtResource("3_p5hnc")
+
+[node name="NextIndicator" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NextIndicatorSprite" type="AnimatedSprite2D" parent="NinePatchRect/NextIndicator"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-13, 2)
+sprite_frames = SubResource("SpriteFrames_0i7ng")
+autoplay = "default"
+frame_progress = 0.372352
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.883378, 0.883378, 0.883378, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_fonts/font = ExtResource("3_bg7xa")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

@@ -1,0 +1,129 @@
+[gd_scene load_steps=20 format=3 uid="uid://x0wabcyrvfys"]
+
+[ext_resource type="Script" path="res://scenes/enemies/bat.gd" id="1_5rny7"]
+[ext_resource type="Texture2D" uid="uid://ygqkvqwuxtqs" path="res://assets/enemies/bat.png" id="1_o4wux"]
+[ext_resource type="Texture2D" uid="uid://cbf2fvp0ai7tr" path="res://assets/enemies/shadow.png" id="2_qsmch"]
+[ext_resource type="PackedScene" uid="uid://bkkos8jkwtkru" path="res://scenes/helper/hurt_box.tscn" id="3_y5pv4"]
+[ext_resource type="PackedScene" uid="uid://c5v2apnli0vd2" path="res://scenes/helper/stats.tscn" id="5_jfqtf"]
+[ext_resource type="PackedScene" uid="uid://d2kxl47qg5uv6" path="res://scenes/helper/player_detection_zone.tscn" id="6_yeo12"]
+[ext_resource type="PackedScene" uid="uid://5qxqadb5k7qt" path="res://scenes/helper/hit_box.tscn" id="7_d0jbo"]
+[ext_resource type="PackedScene" uid="uid://2rp4f5b4d1y0" path="res://scenes/helper/soft_collision.tscn" id="8_ggxg7"]
+[ext_resource type="PackedScene" uid="uid://cv242mlh4ysg4" path="res://scenes/enemies/wander_controller.tscn" id="9_yn80u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmj4y"]
+atlas = ExtResource("1_o4wux")
+region = Rect2(0, 0, 11, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pae1v"]
+atlas = ExtResource("1_o4wux")
+region = Rect2(11, 0, 11, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwjdc"]
+atlas = ExtResource("1_o4wux")
+region = Rect2(22, 0, 11, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eprtw"]
+atlas = ExtResource("1_o4wux")
+region = Rect2(33, 0, 11, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5defw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmj4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pae1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwjdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eprtw")
+}],
+"loop": true,
+"name": &"flyAnimation",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndre6"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijn26"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mha1a"]
+radius = 33.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ci72l"]
+radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6f2v"]
+radius = 6.0
+
+[node name="Bat" type="CharacterBody2D" groups=["EnemyGameEvent"]]
+collision_layer = 16
+script = ExtResource("1_5rny7")
+
+[node name="Bat" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5defw")
+animation = &"flyAnimation"
+autoplay = "flyAnimation"
+frame_progress = 0.875047
+offset = Vector2(0, -10.125)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.16667)
+texture = ExtResource("2_qsmch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ndre6")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_y5pv4")]
+visible = false
+collision_mask = 8
+offsetY = -8
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_ijn26")
+debug_color = Color(0.72286, 0.416955, 0.619492, 0.42)
+
+[node name="Stats" parent="." instance=ExtResource("5_jfqtf")]
+maxHealth = 2
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("6_yeo12")]
+visible = false
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_mha1a")
+
+[node name="HitBox" parent="." instance=ExtResource("7_d0jbo")]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_ci72l")
+disabled = false
+debug_color = Color(0, 0.643137, 0.286275, 0.419608)
+
+[node name="SoftCollision" parent="." instance=ExtResource("8_ggxg7")]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource("CircleShape2D_s6f2v")
+
+[node name="WanderController" parent="." instance=ExtResource("9_yn80u")]
+
+[node name="StunTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+
+[editable path="HurtBox"]
+[editable path="PlayerDetectionZone"]
+[editable path="HitBox"]
+[editable path="SoftCollision"]

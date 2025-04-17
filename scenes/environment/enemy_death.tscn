@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgbmsaty5fjti"]
+
+[ext_resource type="Script" path="res://scenes/environment/destroy_effect.gd" id="1_efuyx"]
+[ext_resource type="AudioStream" uid="uid://cfaf8es6dqmlp" path="res://assets/sounds/hitHurt.wav" id="2_vwjss"]
+
+[sub_resource type="Gradient" id="Gradient_tf8lt"]
+offsets = PackedFloat32Array(0, 0.0990991, 0.187387, 0.293694, 1)
+colors = PackedColorArray(0.938199, 0, 0.246511, 1, 0, 0, 0, 1, 0.937255, 0, 0.247059, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="EnemyDeath" type="Node2D"]
+script = ExtResource("1_efuyx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 6
+lifetime = 2.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+damping_min = 17.763
+damping_max = 41.214
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_tf8lt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vwjss")
+autoplay = true
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

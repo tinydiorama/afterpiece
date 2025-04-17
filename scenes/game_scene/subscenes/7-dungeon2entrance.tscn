@@ -1,0 +1,417 @@
+[gd_scene load_steps=36 format=3 uid="uid://4n6qkjk71cj"]
+
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_ssagp"]
+[ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="2_yko7t"]
+[ext_resource type="Texture2D" uid="uid://dmmf7px6dhp8g" path="res://assets/environment/background.png" id="3_ewy40"]
+[ext_resource type="Texture2D" uid="uid://cw72w34rsysyk" path="res://assets/environment/stonepath1.png" id="4_611p3"]
+[ext_resource type="Texture2D" uid="uid://cfjqxmh15gy76" path="res://assets/environment/7-dungeon2entrance.png" id="4_aqm18"]
+[ext_resource type="Texture2D" uid="uid://dak1pspyesgdf" path="res://assets/environment/7-dungeontreecanopy-shadow.png" id="5_4kkn6"]
+[ext_resource type="Texture2D" uid="uid://l1j10o328org" path="res://assets/environment/stonepath2.png" id="5_bwb0c"]
+[ext_resource type="Texture2D" uid="uid://v03h36xf0fyp" path="res://assets/environment/stonepath4.png" id="6_al6nc"]
+[ext_resource type="Texture2D" uid="uid://n1ikhsoue43k" path="res://assets/environment/dungeon2-wall.png" id="7_166o7"]
+[ext_resource type="Texture2D" uid="uid://dk8o7bux1b8on" path="res://assets/environment/stonepath5.png" id="7_p6knu"]
+[ext_resource type="Texture2D" uid="uid://byqjmuvr071om" path="res://assets/environment/dungeon2wall-entrance.png" id="8_bosdf"]
+[ext_resource type="Texture2D" uid="uid://cj4av2geotwjl" path="res://assets/environment/stonepath6.png" id="8_lyh3w"]
+[ext_resource type="Texture2D" uid="uid://b573nxwujm5cw" path="res://assets/environment/stonepath3.png" id="9_emdxs"]
+[ext_resource type="Texture2D" uid="uid://4qjn1sieadkm" path="res://assets/environment/dungeon2-entrancedarkness.png" id="9_foyuy"]
+[ext_resource type="Texture2D" uid="uid://1qhadoynuxpk" path="res://assets/environment/dungeon2-wallfoliage.png" id="9_isdjy"]
+[ext_resource type="PackedScene" uid="uid://f5nk41k4ue" path="res://scenes/environment/tree_2.tscn" id="10_nvw7g"]
+[ext_resource type="PackedScene" uid="uid://jva70o3wlx4d" path="res://scenes/environment/tree_1.tscn" id="11_qepj2"]
+[ext_resource type="PackedScene" uid="uid://d4ab4lg3t7hoj" path="res://scenes/environment/bush.tscn" id="13_4nnub"]
+[ext_resource type="PackedScene" uid="uid://excdmor5a5r6" path="res://scenes/environment/giantcolumn1.tscn" id="13_dusll"]
+[ext_resource type="PackedScene" uid="uid://dnb7s7recotwj" path="res://scenes/environment/interactive_grass.tscn" id="14_edlma"]
+[ext_resource type="PackedScene" uid="uid://ov3bqtgtxem2" path="res://scenes/helper/loader_area.tscn" id="15_kvs0b"]
+[ext_resource type="Texture2D" uid="uid://4otfo1hlnl1b" path="res://assets/environment/dungeon2-statue1.png" id="15_p1tli"]
+[ext_resource type="PackedScene" uid="uid://c6yu7veap5ong" path="res://scenes/helper/level_load_location.tscn" id="16_6xh2p"]
+[ext_resource type="Texture2D" uid="uid://c1c110bpmy7og" path="res://assets/environment/7-dungeon2treecanopy.png" id="16_44nr0"]
+[ext_resource type="Texture2D" uid="uid://kbmgdblx5yb2" path="res://assets/environment/dungeon2-statue2.png" id="16_v1ygl"]
+[ext_resource type="PackedScene" uid="uid://83kcp8c0aomw" path="res://scenes/environment/tree_3.tscn" id="20_8b0d3"]
+[ext_resource type="PackedScene" uid="uid://c45wbe2bhx4hd" path="res://scenes/environment/giantcolumn2.tscn" id="24_hks6r"]
+[ext_resource type="PackedScene" uid="uid://cn418llinja77" path="res://scenes/environment/giantcolumnbroken.tscn" id="25_clit4"]
+[ext_resource type="PackedScene" uid="uid://dlfis0vpcinaf" path="res://scenes/environment/dapple_1.tscn" id="25_q0m11"]
+[ext_resource type="PackedScene" uid="uid://dlq3e2vhausga" path="res://scenes/environment/dapple_3.tscn" id="28_puugy"]
+[ext_resource type="PackedScene" uid="uid://kpcqc7ebnlco" path="res://scenes/environment/dapple_2.tscn" id="29_3rf3l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5xh0"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b816o"]
+size = Vector2(73, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ytkg"]
+size = Vector2(111, 482.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl4m8"]
+size = Vector2(386, 60)
+
+[node name="7Dungeon2Entrance" type="Node2D" node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
+script = ExtResource("1_ssagp")
+id = 7
+allLevelLocations = [NodePath("LevelLoadLocation")]
+characterRoot = NodePath("SceneObjects")
+cameraTopLeft = NodePath("CameraPoints/TopLeft")
+cameraBottomRight = NodePath("CameraPoints/BottomRight")
+
+[node name="CameraPoints" parent="." instance=ExtResource("2_yko7t")]
+
+[node name="TopLeft" parent="CameraPoints" index="0"]
+position = Vector2(21, 25)
+
+[node name="BottomRight" parent="CameraPoints" index="1"]
+position = Vector2(364, 210)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(192.5, 240.5)
+scale = Vector2(1.01852, 1.44713)
+texture = ExtResource("3_ewy40")
+
+[node name="Stonepath1" type="Sprite2D" parent="Background"]
+position = Vector2(-20.1272, 111.6)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("4_611p3")
+
+[node name="Stonepath2" type="Sprite2D" parent="Background"]
+position = Vector2(-9.32726, 108.145)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("5_bwb0c")
+
+[node name="Stonepath4" type="Sprite2D" parent="Background"]
+position = Vector2(-9.32726, 81.1952)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("6_al6nc")
+
+[node name="Stonepath5" type="Sprite2D" parent="Background"]
+position = Vector2(-23.0727, 101.926)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("7_p6knu")
+
+[node name="Stonepath6" type="Sprite2D" parent="Background"]
+position = Vector2(-8.34544, 97.7798)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("8_lyh3w")
+
+[node name="Stonepath3" type="Sprite2D" parent="Background"]
+position = Vector2(-22.0909, 75.667)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("9_emdxs")
+
+[node name="Stonepath7" type="Sprite2D" parent="Background"]
+position = Vector2(-10.3091, 73.5939)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("5_bwb0c")
+
+[node name="Stonepath8" type="Sprite2D" parent="Background"]
+position = Vector2(-17.1818, 4.49165)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("6_al6nc")
+
+[node name="Stonepath9" type="Sprite2D" parent="Background"]
+position = Vector2(-2.45454, 9.32881)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("7_p6knu")
+
+[node name="Stonepath10" type="Sprite2D" parent="Background"]
+position = Vector2(-17.1818, 14.166)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("8_lyh3w")
+
+[node name="Stonepath11" type="Sprite2D" parent="Background"]
+position = Vector2(-6.38181, -1.03653)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("5_bwb0c")
+
+[node name="Stonepath12" type="Sprite2D" parent="Background"]
+position = Vector2(-8.34544, 54.9363)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("4_611p3")
+
+[node name="Stonepath13" type="Sprite2D" parent="Background"]
+position = Vector2(-17.1818, 48.0261)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("9_emdxs")
+
+[node name="Stonepath14" type="Sprite2D" parent="Background"]
+position = Vector2(-5.39999, -33.5146)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("5_bwb0c")
+
+[node name="Stonepath15" type="Sprite2D" parent="Background"]
+position = Vector2(-16.2, -39.0428)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("9_emdxs")
+
+[node name="Stonepath16" type="Sprite2D" parent="Background"]
+position = Vector2(-1.47272, -43.1889)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("8_lyh3w")
+
+[node name="Stonepath17" type="Sprite2D" parent="Background"]
+position = Vector2(-7.36362, -62.5376)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("6_al6nc")
+
+[node name="Stonepath18" type="Sprite2D" parent="Background"]
+position = Vector2(4.41818, -57.7004)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("7_p6knu")
+
+[node name="Stonepath19" type="Sprite2D" parent="Background"]
+position = Vector2(-12.2727, -72.2119)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("4_611p3")
+
+[node name="Stonepath20" type="Sprite2D" parent="Background"]
+position = Vector2(0.490906, -69.4478)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("5_bwb0c")
+
+[node name="Stonepath21" type="Sprite2D" parent="Background"]
+position = Vector2(-0.490906, -80.5042)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("9_emdxs")
+
+[node name="7-dungeon2Entrance" type="Sprite2D" parent="Background"]
+position = Vector2(1.47272, 3.10959)
+scale = Vector2(0.981817, 0.691023)
+texture = ExtResource("4_aqm18")
+
+[node name="7-dungeontreecanopy-shadow" type="Sprite2D" parent="Background/7-dungeon2Entrance"]
+position = Vector2(-7.00026, -2.99998)
+texture = ExtResource("5_4kkn6")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1, 1.1)
+scroll_offset = Vector2(0, -400)
+
+[node name="7-dungeon2Treecanopy" type="Sprite2D" parent="Parallax2D"]
+z_index = 1
+texture = ExtResource("16_44nr0")
+centered = false
+
+[node name="SceneObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="GiantColumn1" parent="SceneObjects" instance=ExtResource("13_dusll")]
+position = Vector2(131, 247)
+
+[node name="Dungeon 2 Wall" type="StaticBody2D" parent="SceneObjects"]
+position = Vector2(194, 70)
+
+[node name="Dungeon2-entrancedarkness" type="Sprite2D" parent="SceneObjects/Dungeon 2 Wall"]
+position = Vector2(-7, 14)
+texture = ExtResource("9_foyuy")
+
+[node name="Dungeon2-wall" type="Sprite2D" parent="SceneObjects/Dungeon 2 Wall"]
+texture = ExtResource("7_166o7")
+
+[node name="Dungeon2Wall-entrance" type="Sprite2D" parent="SceneObjects/Dungeon 2 Wall"]
+position = Vector2(-6, 16)
+texture = ExtResource("8_bosdf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SceneObjects/Dungeon 2 Wall"]
+polygon = PackedVector2Array(-186.5, 55, -63, 55, -61, 61, -35, 61, -35, -12, 23, -12, 23, 60, 49, 60, 49, 55, 186.5, 55, 186.5, -55, -186.5, -55)
+
+[node name="Dungeon2-wallfoliage" type="Sprite2D" parent="SceneObjects/Dungeon 2 Wall"]
+position = Vector2(-6, 18)
+texture = ExtResource("9_isdjy")
+
+[node name="Trees" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Tree2" parent="SceneObjects/Trees" instance=ExtResource("10_nvw7g")]
+position = Vector2(140, 219)
+
+[node name="Tree1" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(239, 240)
+
+[node name="Tree3" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(258, 258)
+
+[node name="Tree4" parent="SceneObjects/Trees" instance=ExtResource("20_8b0d3")]
+position = Vector2(241, 271)
+
+[node name="Tree5" parent="SceneObjects/Trees" instance=ExtResource("10_nvw7g")]
+position = Vector2(146, 406)
+
+[node name="Tree6" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(111, 395)
+
+[node name="Tree7" parent="SceneObjects/Trees" instance=ExtResource("10_nvw7g")]
+position = Vector2(252, 347)
+
+[node name="Tree8" parent="SceneObjects/Trees" instance=ExtResource("20_8b0d3")]
+position = Vector2(120, 415)
+
+[node name="Tree9" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(270, 316)
+
+[node name="Tree10" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(287, 385)
+
+[node name="Tree11" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(266, 447)
+
+[node name="Tree12" parent="SceneObjects/Trees" instance=ExtResource("10_nvw7g")]
+position = Vector2(69, 445)
+
+[node name="Tree13" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(45, 399)
+
+[node name="Tree14" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(113, 268)
+
+[node name="Tree15" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(130, 139)
+
+[node name="Tree16" parent="SceneObjects/Trees" instance=ExtResource("20_8b0d3")]
+position = Vector2(234, 156)
+
+[node name="Tree17" parent="SceneObjects/Trees" instance=ExtResource("10_nvw7g")]
+position = Vector2(251, 134)
+
+[node name="Tree18" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(306, 131)
+
+[node name="Tree19" parent="SceneObjects/Trees" instance=ExtResource("11_qepj2")]
+position = Vector2(82, 130)
+
+[node name="Tree20" parent="SceneObjects/Trees" instance=ExtResource("10_nvw7g")]
+position = Vector2(95, 142)
+
+[node name="Bushes" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="Bush" parent="SceneObjects/Bushes" instance=ExtResource("13_4nnub")]
+position = Vector2(210, 256)
+
+[node name="Bush2" parent="SceneObjects/Bushes" instance=ExtResource("13_4nnub")]
+position = Vector2(216, 266)
+
+[node name="Bush3" parent="SceneObjects/Bushes" instance=ExtResource("13_4nnub")]
+position = Vector2(163, 169)
+
+[node name="Bush4" parent="SceneObjects/Bushes" instance=ExtResource("13_4nnub")]
+position = Vector2(153, 174)
+
+[node name="Bush5" parent="SceneObjects/Bushes" instance=ExtResource("13_4nnub")]
+position = Vector2(140, 261)
+
+[node name="Grass" type="Node2D" parent="SceneObjects"]
+y_sort_enabled = true
+
+[node name="InteractiveGrass" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(156, 322)
+
+[node name="InteractiveGrass2" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(153, 327)
+
+[node name="InteractiveGrass3" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(158, 332)
+
+[node name="InteractiveGrass4" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(232, 325)
+
+[node name="InteractiveGrass5" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(227, 321)
+
+[node name="InteractiveGrass6" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(143, 262)
+
+[node name="InteractiveGrass7" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(139, 265)
+
+[node name="InteractiveGrass8" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(144, 269)
+
+[node name="InteractiveGrass9" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(227, 226)
+
+[node name="InteractiveGrass10" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(223, 161)
+
+[node name="InteractiveGrass11" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(228, 164)
+
+[node name="InteractiveGrass12" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(223, 170)
+
+[node name="InteractiveGrass13" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(275, 145)
+
+[node name="InteractiveGrass14" parent="SceneObjects/Grass" instance=ExtResource("14_edlma")]
+position = Vector2(280, 148)
+
+[node name="Dungeon2-Statue1" type="StaticBody2D" parent="SceneObjects"]
+position = Vector2(220, 133)
+
+[node name="Dungeon2-statue1" type="Sprite2D" parent="SceneObjects/Dungeon2-Statue1"]
+modulate = Color(0.716296, 0.716296, 0.716296, 1)
+texture = ExtResource("15_p1tli")
+offset = Vector2(0, -15.725)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneObjects/Dungeon2-Statue1"]
+shape = SubResource("CircleShape2D_k5xh0")
+disabled = true
+
+[node name="Dungeon2-Statue2" type="StaticBody2D" parent="SceneObjects"]
+position = Vector2(158, 132)
+
+[node name="Dungeon2-statue1" type="Sprite2D" parent="SceneObjects/Dungeon2-Statue2"]
+modulate = Color(0.716296, 0.716296, 0.716296, 1)
+texture = ExtResource("16_v1ygl")
+offset = Vector2(0, -15.725)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneObjects/Dungeon2-Statue2"]
+shape = SubResource("CircleShape2D_k5xh0")
+disabled = true
+
+[node name="Dapple1" parent="SceneObjects" instance=ExtResource("25_q0m11")]
+position = Vector2(186, 160)
+
+[node name="Dapple3" parent="SceneObjects" instance=ExtResource("28_puugy")]
+position = Vector2(199, 277)
+
+[node name="Dapple2" parent="SceneObjects" instance=ExtResource("29_3rf3l")]
+position = Vector2(172, 352)
+
+[node name="GiantColumn2" parent="SceneObjects" instance=ExtResource("24_hks6r")]
+position = Vector2(247, 219)
+
+[node name="GiantColumnBroken" parent="SceneObjects" instance=ExtResource("25_clit4")]
+position = Vector2(243, 316)
+
+[node name="GiantColumn3" parent="SceneObjects" instance=ExtResource("24_hks6r")]
+position = Vector2(128, 380)
+
+[node name="LoaderArea" parent="." instance=ExtResource("15_kvs0b")]
+position = Vector2(186, 453)
+levelToGoToId = 5
+idLocation = 1
+
+[node name="CollisionShape2D" parent="LoaderArea" index="0"]
+shape = SubResource("RectangleShape2D_b816o")
+
+[node name="LevelLoadLocation" parent="." instance=ExtResource("16_6xh2p")]
+position = Vector2(187, 424)
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-4, 241)
+shape = SubResource("RectangleShape2D_2ytkg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(368, 235)
+shape = SubResource("RectangleShape2D_2ytkg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(185, 494)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(194, 15)
+shape = SubResource("RectangleShape2D_rl4m8")
+
+[editable path="CameraPoints"]
+[editable path="LoaderArea"]

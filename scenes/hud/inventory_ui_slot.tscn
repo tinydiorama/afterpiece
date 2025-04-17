@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnq6inm64iiuh"]
+
+[ext_resource type="Texture2D" uid="uid://dhc6jlq6gu2gx" path="res://assets/ui/inventorySlot.png" id="1_oi0m6"]
+[ext_resource type="Script" path="res://scenes/hud/inventory_ui_slot.gd" id="1_pltnr"]
+[ext_resource type="Texture2D" uid="uid://di31e28lpueiv" path="res://assets/ui/inventorySlotSelected.png" id="2_hdjys"]
+[ext_resource type="FontFile" uid="uid://bs13rwmaycnso" path="res://assets/fonts/Caroni-Regular.otf" id="4_3rafi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bi0vt"]
+
+[node name="InventoryUISlot" type="Panel"]
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bi0vt")
+script = ExtResource("1_pltnr")
+
+[node name="Selected" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hdjys")
+
+[node name="BG" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_oi0m6")
+
+[node name="Item" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Num" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -23.0
+offset_right = 21.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_3rafi")
+text = "0"
+vertical_alignment = 2

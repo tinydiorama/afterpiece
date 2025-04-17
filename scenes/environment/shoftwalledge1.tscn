@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dban5nj0t48g2"]
+
+[ext_resource type="Texture2D" uid="uid://bktk4gyc4mkkx" path="res://assets/environment/shortwalledge1.png" id="1_h4a6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(20, 36)
+
+[node name="ShortwallEdge1" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Shortwalledge1" type="Sprite2D" parent="."]
+texture = ExtResource("1_h4a6e")

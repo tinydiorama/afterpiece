@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmecwfutof251"]
+
+[ext_resource type="Texture2D" uid="uid://coproj86vsvca" path="res://assets/environment/shrinecluster1.png" id="1_l3j2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(14, 11)
+
+[node name="Shrine1" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Shrinecluster1" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_l3j2m")

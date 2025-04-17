@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4ab4lg3t7hoj"]
+
+[ext_resource type="Script" path="res://scenes/environment/bush.gd" id="1_c1ajx"]
+[ext_resource type="Texture2D" uid="uid://dlorn8571vx5k" path="res://assets/environment/bush.png" id="1_sa2yr"]
+[ext_resource type="PackedScene" uid="uid://bkkos8jkwtkru" path="res://scenes/helper/hurt_box.tscn" id="3_gymem"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uops"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggp2m"]
+radius = 3.0
+
+[node name="Bush" type="StaticBody2D"]
+script = ExtResource("1_c1ajx")
+
+[node name="Bush" type="Sprite2D" parent="."]
+texture = ExtResource("1_sa2yr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5uops")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_gymem")]
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_ggp2m")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+
+[editable path="HurtBox"]

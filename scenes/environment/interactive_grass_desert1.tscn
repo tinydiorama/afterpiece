@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxv0g8h3om23a"]
+
+[ext_resource type="Script" path="res://scenes/environment/interactive_grass.gd" id="1_xdclc"]
+[ext_resource type="Shader" path="res://scenes/environment/interactive_grass.gdshader" id="2_fuv2l"]
+[ext_resource type="Texture2D" uid="uid://d05qk5i8uqbbv" path="res://assets/environment/desertgrass1.png" id="3_frdtg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rgb7"]
+resource_local_to_scene = true
+shader = ExtResource("2_fuv2l")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = null
+shader_parameter/maxStrength = 0.0
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = 0.0
+shader_parameter/skew = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f08gu"]
+size = Vector2(10, 4)
+
+[node name="InteractiveGrassDesert1" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_xdclc")
+
+[node name="Animatedgrass" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0rgb7")
+texture = ExtResource("3_frdtg")
+offset = Vector2(0, -1.11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f08gu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4kd0o5qq3pfl"]
+
+[ext_resource type="Script" path="res://scenes/helper/save_point.gd" id="1_8de8q"]
+[ext_resource type="Texture2D" uid="uid://df54eh0en4wf1" path="res://assets/ui/plus-icon.png" id="2_mikbe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gd2cm"]
+
+[node name="SavePoint" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_8de8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gd2cm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mikbe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

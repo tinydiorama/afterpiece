@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://tnihmqsnq4gl"]
+
+[ext_resource type="Texture2D" uid="uid://cnshb8vfndnrw" path="res://assets/environment/townleft-house3.png" id="1_wiawf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4vy3"]
+size = Vector2(54, 22)
+
+[node name="TownLeftHouse3" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Townleft-house3" type="Sprite2D" parent="."]
+texture = ExtResource("1_wiawf")
+offset = Vector2(0, -10.12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -4)
+shape = SubResource("RectangleShape2D_v4vy3")

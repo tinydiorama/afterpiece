@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfbmdixedjaqe"]
+
+[ext_resource type="Script" path="res://scenes/environment/destroy_effect.gd" id="1_78xs3"]
+[ext_resource type="AudioStream" uid="uid://j5yieyejmdjs" path="res://assets/sounds/bush.mp3" id="2_wvqrr"]
+
+[sub_resource type="Gradient" id="Gradient_tf8lt"]
+offsets = PackedFloat32Array(0, 0.484685, 1)
+colors = PackedColorArray(0.34902, 0.454902, 0.313726, 1, 0.614104, 0.67687, 0.593181, 0.592793, 1, 1, 1, 0)
+
+[node name="BushEffect" type="Node2D"]
+script = ExtResource("1_78xs3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 6
+lifetime = 2.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+damping_min = 79.425
+damping_max = 100.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_tf8lt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wvqrr")
+autoplay = true
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://2pschbvlx813"]
+
+[ext_resource type="Texture2D" uid="uid://jq4ywjgb34dl" path="res://assets/environment/tree2-desert.png" id="1_4lf8j"]
+[ext_resource type="Texture2D" uid="uid://ciaaslew3pp3t" path="res://assets/environment/treeshadow-desert2.png" id="2_5er8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(17, 13)
+
+[node name="Tree2Desert" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Tree2-desert" type="Sprite2D" parent="."]
+texture = ExtResource("1_4lf8j")
+offset = Vector2(4.49, -25.315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Treeshadow-desert2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 3)
+texture = ExtResource("2_5er8a")
