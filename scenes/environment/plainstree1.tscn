@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://4cukjp5hlm7r"]
+
+[ext_resource type="Texture2D" uid="uid://ci87d528p56un" path="res://assets/environment/plains/plainstree1.png" id="1_5oitl"]
+[ext_resource type="Texture2D" uid="uid://d0mm3uvo4v4ea" path="res://assets/environment/treeshadow2.png" id="2_7cpjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(17, 13)
+
+[node name="PlainsTree1" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Plainstree1" type="Sprite2D" parent="."]
+texture = ExtResource("1_5oitl")
+offset = Vector2(0, -21.12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Treeshadow2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1, 3)
+texture = ExtResource("2_7cpjl")

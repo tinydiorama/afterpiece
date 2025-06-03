@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdt7yfm4ma4sg"]
+
+[ext_resource type="Texture2D" uid="uid://u5abr74ri5xk" path="res://assets/environment/plains/ruinschunk-crumbled.png" id="1_aa0tj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(38, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uvsi"]
+size = Vector2(61, 11)
+
+[node name="RuinsChunkCrumbled" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-31, -3)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(18.5, -1.5)
+shape = SubResource("RectangleShape2D_1uvsi")
+
+[node name="Ruinschunk-crumbled" type="Sprite2D" parent="."]
+texture = ExtResource("1_aa0tj")
+offset = Vector2(0, -21.815)

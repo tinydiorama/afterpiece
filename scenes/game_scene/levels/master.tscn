@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://xo2wgk4ueth5"]
+[gd_scene load_steps=45 format=3 uid="uid://xo2wgk4ueth5"]
 
 [ext_resource type="PackedScene" uid="uid://td5iqd47nypq" path="res://scenes/helper/camera_2d.tscn" id="1_8a3os"]
 [ext_resource type="Texture2D" uid="uid://dmmf7px6dhp8g" path="res://assets/environment/background.png" id="2_xxdmk"]
@@ -31,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://dsu6eigx5p1q4" path="res://scenes/game_scene/subscenes/8-wastesentrance.tscn" id="29_78nc0"]
 [ext_resource type="PackedScene" uid="uid://co5pwmh7l7tl1" path="res://scenes/environment/lamp-hanging.tscn" id="29_hhi5a"]
 [ext_resource type="PackedScene" uid="uid://djppri5c2hq8" path="res://scenes/game_scene/subscenes/9-mainwastes.tscn" id="31_j8w61"]
+[ext_resource type="PackedScene" uid="uid://c26clt5qh3lcs" path="res://scenes/game_scene/subscenes/10-grassfield.tscn" id="32_otug7"]
+[ext_resource type="PackedScene" uid="uid://ckb1p5kxff6g" path="res://scenes/game_scene/subscenes/11-plainsruins.tscn" id="33_dos8w"]
 
 [sub_resource type="Animation" id="Animation_kicen"]
 resource_name = "fade"
@@ -162,7 +164,7 @@ bottomRight = NodePath("../0Start/CameraPoints/BottomRight")
 
 [node name="MasterLevelController" type="Node2D" parent="." node_paths=PackedStringArray("allLevelManagers", "camera", "player")]
 script = ExtResource("3_2knoa")
-allLevelManagers = [NodePath("../0Start"), NodePath("../1SouthwestPath"), NodePath("../2TownEntranceJunction"), NodePath("../3TownLeft"), NodePath("../4DungeonPath"), NodePath("../5DungeonPath2"), NodePath("../6NorthwestClearing"), NodePath("../7Dungeon2Entrance"), NodePath("../8WastesEntrance"), NodePath("../9MainWastes")]
+allLevelManagers = [NodePath("../0Start"), NodePath("../1SouthwestPath"), NodePath("../2TownEntranceJunction"), NodePath("../3TownLeft"), NodePath("../4DungeonPath"), NodePath("../5DungeonPath2"), NodePath("../6NorthwestClearing"), NodePath("../7Dungeon2Entrance"), NodePath("../8WastesEntrance"), NodePath("../9MainWastes"), NodePath("../10GrassField"), NodePath("../11PlainsRuins")]
 camera = NodePath("../Camera2D")
 player = NodePath("../Player")
 
@@ -484,6 +486,24 @@ position = Vector2(1882, -1073)
 [node name="BottomRight" parent="9MainWastes/CameraPoints" index="1"]
 position = Vector2(2593, -485)
 
+[node name="10GrassField" parent="." instance=ExtResource("32_otug7")]
+position = Vector2(987, -1516)
+
+[node name="TopLeft" parent="10GrassField/CameraPoints" index="0"]
+position = Vector2(976, -1522)
+
+[node name="BottomRight" parent="10GrassField/CameraPoints" index="1"]
+position = Vector2(1582, -1101)
+
+[node name="11PlainsRuins" parent="." instance=ExtResource("33_dos8w")]
+position = Vector2(922, -2053)
+
+[node name="TopLeft" parent="11PlainsRuins/CameraPoints" index="0"]
+position = Vector2(925, -2049)
+
+[node name="BottomRight" parent="11PlainsRuins/CameraPoints" index="1"]
+position = Vector2(1296, -1640)
+
 [editable path="Camera2D"]
 [editable path="0Start/LoaderArea"]
 [editable path="0Start/CameraPoints"]
@@ -501,6 +521,7 @@ position = Vector2(2593, -485)
 [editable path="3TownLeft"]
 [editable path="3TownLeft/CameraPoints"]
 [editable path="3TownLeft/LoaderArea"]
+[editable path="3TownLeft/LoaderArea3"]
 [editable path="3TownLeft/LoaderArea2"]
 [editable path="4DungeonPath"]
 [editable path="4DungeonPath/CameraPoints"]
@@ -524,6 +545,17 @@ position = Vector2(2593, -485)
 [editable path="8WastesEntrance/SceneObjects/Powerline1"]
 [editable path="8WastesEntrance/LoaderArea"]
 [editable path="8WastesEntrance/LoaderArea2"]
+[editable path="8WastesEntrance/LoaderArea3"]
 [editable path="9MainWastes"]
 [editable path="9MainWastes/CameraPoints"]
 [editable path="9MainWastes/LoaderArea"]
+[editable path="10GrassField"]
+[editable path="10GrassField/CameraPoints"]
+[editable path="10GrassField/LoaderArea"]
+[editable path="10GrassField/LoaderArea3"]
+[editable path="10GrassField/LoaderArea2"]
+[editable path="10GrassField/LoaderArea4"]
+[editable path="10GrassField/LoaderArea5"]
+[editable path="11PlainsRuins"]
+[editable path="11PlainsRuins/CameraPoints"]
+[editable path="11PlainsRuins/LoaderArea"]

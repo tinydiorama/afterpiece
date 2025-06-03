@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://by3erqaytfbjx"]
+
+[ext_resource type="Script" path="res://scenes/environment/windmill.gd" id="1_n3h08"]
+[ext_resource type="Texture2D" uid="uid://b6agcqaclqdgc" path="res://assets/environment/plains/windmillbase.png" id="1_qcdo2"]
+[ext_resource type="Texture2D" uid="uid://kurq1ecw33mx" path="res://assets/environment/plains/windmill-wings.png" id="2_iev5x"]
+
+[sub_resource type="Animation" id="Animation_6nssd"]
+resource_name = "windmillanimation"
+length = 6.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Windmill-wings:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00833333, 1.5, 3, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_m7qdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Windmill-wings:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4s1s2"]
+_data = {
+&"windmillanimation": SubResource("Animation_6nssd"),
+&"RESET": SubResource("Animation_m7qdc")
+}
+
+[node name="Windmill" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_n3h08")
+
+[node name="Windmillbase" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_qcdo2")
+offset = Vector2(0, -27.59)
+
+[node name="Windmill-wings" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -47)
+texture = ExtResource("2_iev5x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, -4, -16, 1, -9, 4, 8, 4, 17, 0, 20, -5, 17, -17, 2, -22, -4, -22, -17, -16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4s1s2")
+}

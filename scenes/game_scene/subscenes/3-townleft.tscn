@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d0n35egw34wau"]
+[gd_scene load_steps=39 format=3 uid="uid://d0n35egw34wau"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_i7sid"]
 [ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="2_nwb3c"]
@@ -40,6 +40,9 @@ radius = 13.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rybc2"]
 size = Vector2(28, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2qyd"]
+size = Vector2(65, 43)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bglg7"]
 size = Vector2(111, 157.5)
 
@@ -49,10 +52,13 @@ size = Vector2(111, 154.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rl4m8"]
 size = Vector2(386, 60)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_008eh"]
+size = Vector2(195, 60)
+
 [node name="3TownLeft" type="Node2D" node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
 script = ExtResource("1_i7sid")
 id = 3
-allLevelLocations = [NodePath("LevelLoadLocation"), NodePath("LevelLoadLocation2")]
+allLevelLocations = [NodePath("LevelLoadLocation"), NodePath("LevelLoadLocation2"), NodePath("LevelLoadLocation3")]
 characterRoot = NodePath("SceneObjects")
 cameraTopLeft = NodePath("CameraPoints/TopLeft")
 cameraBottomRight = NodePath("CameraPoints/BottomRight")
@@ -288,6 +294,14 @@ idLocation = 1
 position = Vector2(-79, -173)
 shape = SubResource("RectangleShape2D_rybc2")
 
+[node name="LoaderArea3" parent="." instance=ExtResource("10_77pq8")]
+position = Vector2(178, 20)
+levelToGoToId = 10
+
+[node name="CollisionShape2D" parent="LoaderArea3" index="0"]
+position = Vector2(2.5, -3.5)
+shape = SubResource("RectangleShape2D_b2qyd")
+
 [node name="LoaderArea2" parent="." instance=ExtResource("10_77pq8")]
 position = Vector2(397, 178)
 levelToGoToId = 8
@@ -301,6 +315,10 @@ position = Vector2(56, 183)
 [node name="LevelLoadLocation2" parent="." instance=ExtResource("11_c6pj6")]
 position = Vector2(371, 179)
 id = 1
+
+[node name="LevelLoadLocation3" parent="." instance=ExtResource("11_c6pj6")]
+position = Vector2(181, 49)
+id = 2
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 collision_mask = 2
@@ -326,8 +344,12 @@ position = Vector2(208, 381)
 shape = SubResource("RectangleShape2D_rl4m8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(215, -4)
-shape = SubResource("RectangleShape2D_rl4m8")
+position = Vector2(310.5, -4)
+shape = SubResource("RectangleShape2D_008eh")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(50, -4)
+shape = SubResource("RectangleShape2D_008eh")
 
 [connection signal="body_entered" from="SceneObjects/Vanese/Interact" to="SceneObjects/Vanese/Interact" method="_on_body_entered"]
 [connection signal="body_exited" from="SceneObjects/Vanese/Interact" to="SceneObjects/Vanese/Interact" method="_on_body_exited"]
@@ -336,4 +358,5 @@ shape = SubResource("RectangleShape2D_rl4m8")
 
 [editable path="CameraPoints"]
 [editable path="LoaderArea"]
+[editable path="LoaderArea3"]
 [editable path="LoaderArea2"]

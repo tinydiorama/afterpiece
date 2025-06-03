@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://chenwiawxnc3m"]
+
+[ext_resource type="Texture2D" uid="uid://dpmurgw87dmwy" path="res://assets/environment/plains/ruinsdestroyed.png" id="1_2ioqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(91, 16)
+
+[node name="RuinsChunkDestroyed" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11.5, 0)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Ruinsdestroyed" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ioqo")
+offset = Vector2(0, -16.01)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-58, -3, -34, 2, 5, -1, 27, -15, -31, -27)

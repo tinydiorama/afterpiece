@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dsu6eigx5p1q4"]
+[gd_scene load_steps=30 format=3 uid="uid://dsu6eigx5p1q4"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_jd3y7"]
 [ext_resource type="PackedScene" uid="uid://cob6ea24wkt40" path="res://scenes/helper/camerapoints.tscn" id="2_472vq"]
@@ -28,16 +28,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b816o"]
 size = Vector2(23, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_intgo"]
+size = Vector2(62, 21)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ytkg"]
 size = Vector2(111, 387.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rl4m8"]
 size = Vector2(386, 60)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikq6u"]
+size = Vector2(202, 60)
+
 [node name="8WastesEntrance" type="Node2D" node_paths=PackedStringArray("allLevelLocations", "characterRoot", "cameraTopLeft", "cameraBottomRight")]
 script = ExtResource("1_jd3y7")
 id = 8
-allLevelLocations = [NodePath("LevelLoadLocation"), NodePath("LevelLoadLocation2")]
+allLevelLocations = [NodePath("LevelLoadLocation"), NodePath("LevelLoadLocation2"), NodePath("LevelLoadLocation3")]
 characterRoot = NodePath("SceneObjects")
 cameraTopLeft = NodePath("CameraPoints/TopLeft")
 cameraBottomRight = NodePath("CameraPoints/BottomRight")
@@ -182,12 +188,25 @@ levelToGoToId = 9
 [node name="CollisionShape2D" parent="LoaderArea2" index="0"]
 shape = SubResource("RectangleShape2D_b816o")
 
+[node name="LoaderArea3" parent="." instance=ExtResource("27_us00w")]
+position = Vector2(231, -2)
+levelToGoToId = 10
+idLocation = 1
+
+[node name="CollisionShape2D" parent="LoaderArea3" index="0"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_intgo")
+
 [node name="LevelLoadLocation" parent="." instance=ExtResource("28_v4amc")]
 position = Vector2(33, 157)
 
 [node name="LevelLoadLocation2" parent="." instance=ExtResource("28_v4amc")]
 position = Vector2(344, 149)
 id = 1
+
+[node name="LevelLoadLocation3" parent="." instance=ExtResource("28_v4amc")]
+position = Vector2(233, 19)
+id = 2
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
@@ -204,10 +223,15 @@ position = Vector2(188, 358)
 shape = SubResource("RectangleShape2D_rl4m8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(191, -29)
-shape = SubResource("RectangleShape2D_rl4m8")
+position = Vector2(99, -29)
+shape = SubResource("RectangleShape2D_ikq6u")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(363, -25)
+shape = SubResource("RectangleShape2D_ikq6u")
 
 [editable path="CameraPoints"]
 [editable path="SceneObjects/Powerline1"]
 [editable path="LoaderArea"]
 [editable path="LoaderArea2"]
+[editable path="LoaderArea3"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmdh7rp685cx0"]
+
+[ext_resource type="Texture2D" uid="uid://b5xvslycstm5f" path="res://assets/environment/plains/plainsgrass.png" id="1_r75pi"]
+[ext_resource type="Script" path="res://scenes/environment/interactivegrass_clump.gd" id="1_vu5uh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f08gu"]
+size = Vector2(10, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_memos"]
+atlas = ExtResource("1_r75pi")
+region = Rect2(42, 0, 21, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkaci"]
+atlas = ExtResource("1_r75pi")
+region = Rect2(0, 0, 21, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yukpk"]
+atlas = ExtResource("1_r75pi")
+region = Rect2(21, 0, 21, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocldb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_memos")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkaci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yukpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_memos")
+}],
+"loop": false,
+"name": &"regrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkaci")
+}],
+"loop": true,
+"name": &"smash",
+"speed": 5.0
+}]
+
+[node name="InteractiveGrassClump" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_vu5uh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_f08gu")
+
+[node name="AnimatedGrass" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ocldb")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedGrass" to="." method="_on_animated_grass_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

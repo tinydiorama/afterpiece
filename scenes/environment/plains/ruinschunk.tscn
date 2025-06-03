@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxodrjfk2qqko"]
+
+[ext_resource type="Texture2D" uid="uid://7dc470nbtw3k" path="res://assets/environment/plains/ruinschunk.png" id="1_rybw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(55, 10)
+
+[node name="RuinsChunk" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-22.5, -1)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Ruinschunk" type="Sprite2D" parent="."]
+texture = ExtResource("1_rybw3")
+offset = Vector2(0, -4.38)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -5, 12, 7, 31, 13, 40, 3, 50, -5, 20, -18)

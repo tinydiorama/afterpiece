@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://citv4h7ak2pii"]
+
+[ext_resource type="Texture2D" uid="uid://dlwknr8gks8ih" path="res://assets/environment/plains/archway.png" id="1_36imi"]
+[ext_resource type="Texture2D" uid="uid://b6rhrlwfgqd51" path="res://assets/environment/plains/wideshadow.png" id="1_bdb5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(38, 16.5)
+
+[node name="Archway" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-43, -0.75)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(44, -1)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Wideshadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-4, -4)
+texture = ExtResource("1_bdb5w")
+
+[node name="Archway" type="Sprite2D" parent="."]
+texture = ExtResource("1_36imi")
+offset = Vector2(0, -35)

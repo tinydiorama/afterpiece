@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bflrnv8jpenfx"]
+
+[ext_resource type="Texture2D" uid="uid://cccaodrl81d0m" path="res://assets/environment/plains/ruinschunkbig2.png" id="1_14ibf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjoa0"]
+size = Vector2(54, 34.25)
+
+[node name="RuinsChunkBig2" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -9.875)
+shape = SubResource("RectangleShape2D_yjoa0")
+
+[node name="Ruinschunkbig2" type="Sprite2D" parent="."]
+texture = ExtResource("1_14ibf")
+offset = Vector2(0, -40.82)

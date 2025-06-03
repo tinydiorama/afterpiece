@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				state = IDLE
 		KNOCKBACK:
-			pass
+			sprite.play("default")
 				
 	sprite.flip_h = velocity.x < 0
 	move_and_slide()
@@ -76,7 +76,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	stats.health -= area.damage
 	var direction = ( position - area.owner.position ).normalized()
 	velocity = direction * knockbackSpeed
-	sprite.frame = 0
+	sprite.frame = 1
 	move_and_slide()
 	state = KNOCKBACK
 	stunTimer.start(1)
